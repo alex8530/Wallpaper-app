@@ -41,7 +41,9 @@
             android:background="@color/colorPrimary"
             app:itemIconTint="@android:color/background_dark"
             app:itemTextColor="@android:color/background_dark"
-            app:menu="@menu/bottom_navigation_menu"></android.support.design.widget.BottomNavigationView>
+            app:menu="@menu/bottom_navigation_menu">
+
+        </android.support.design.widget.BottomNavigationView>
 
 
 
