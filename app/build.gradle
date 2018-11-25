@@ -21,8 +21,8 @@ android {
 }
 
 dependencies {
-    def BUTTER_KNIFE_VERSION="8.5.1"
-    def APP_VERSION="27.+"
+    def BUTTER_KNIFE_VERSION = "8.5.1"
+    def APP_VERSION = "27.+"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -34,7 +34,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-
     //firebase/////////////////////////////////////
 
 
@@ -43,12 +42,9 @@ dependencies {
 
     //////////////////////////////////////////////
     implementation "com.android.support:cardview-v7:$APP_VERSION"
-     implementation "com.android.support:recyclerview-v7:$APP_VERSION"
+    implementation "com.android.support:recyclerview-v7:$APP_VERSION"
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-
-
-
 
     //add butterKnife
     dependencies {

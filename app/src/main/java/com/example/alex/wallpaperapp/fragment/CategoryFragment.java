@@ -1,6 +1,7 @@
 package com.example.alex.wallpaperapp.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.alex.wallpaperapp.ListWallPaperActivity;
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 import com.example.alex.wallpaperapp.model.Category;
@@ -24,10 +26,6 @@ import com.google.firebase.database.Query;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
-
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -110,7 +108,10 @@ public class CategoryFragment extends Fragment {
                     @Override
                     public void onClick(View view, int position) {
                         //go to details of this image !!
-                        Log.d(TAG, "onClick: ");
+
+                        Common.CATEGORY_SELECTED_ID= adapter.getRef(position).getKey();
+                        Common.CATEGORY_SELECTED=model.getName();
+                        startActivity(new Intent(getActivity(),ListWallPaperActivity.class));
                     }
                 });
             }
