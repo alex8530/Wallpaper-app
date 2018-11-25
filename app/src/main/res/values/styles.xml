@@ -26,6 +26,18 @@
 
 
 
+    <!--this is for full screen ***************************************  -->
+    <style name="MyFullScreenTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/FullScreenActionbarStyle</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="FullScreenActionbarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+    <!--this is for full screen ***************************************  -->
 
 
 </resources>
