@@ -1,5 +1,6 @@
 package com.example.alex.wallpaperapp;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
-import com.example.alex.wallpaperapp.model.Category;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
 import com.example.alex.wallpaperapp.viewHolder.WallPaperViewModel;
@@ -37,7 +37,7 @@ public class ListWallPaperActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wall_paper);
+        setContentView(R.layout.activity_list_wall_paper);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.wallPapertoolbar);
         toolbar.setTitle(Common.CATEGORY_SELECTED);
@@ -110,6 +110,8 @@ public class ListWallPaperActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position) {
                         //for details
+                        startActivity(new Intent(getApplicationContext(),ViewWallPaperActivity.class));
+                        Common.wallPaperItem = model;
                     }
                 });
 

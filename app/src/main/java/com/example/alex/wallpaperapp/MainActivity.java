@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+
+import com.example.alex.wallpaperapp.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

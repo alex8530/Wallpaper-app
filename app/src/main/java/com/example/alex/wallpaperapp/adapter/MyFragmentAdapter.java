@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.alex.wallpaperapp.fragment.CategoryFragment;
-import com.example.alex.wallpaperapp.fragment.DailyPopularFragment;
-import com.example.alex.wallpaperapp.fragment.RecentsFragment;
+import com.example.alex.wallpaperapp.CategoryFragment;
+import com.example.alex.wallpaperapp.DailyPopularFragment;
+import com.example.alex.wallpaperapp.RecentsFragment;
 
 public class MyFragmentAdapter extends FragmentPagerAdapter {
     private Context mContext;

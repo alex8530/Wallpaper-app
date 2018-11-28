@@ -18,12 +18,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-<!--this style for change color text in the toolbar scondery not the promary !!-->
+    <!--this style for change color text in the toolbar scondery not the promary !!-->
     <style name="ToolbarColorBackArrow" parent="AppTheme">
         <item name="android:textColorSecondary">@android:color/background_dark</item>
 
     </style>
-
 
 
     <!--this is for full screen ***************************************  -->
@@ -34,10 +33,34 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
     <style name="FullScreenActionbarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
+    <style name="MyFullScreenTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyFullScreenTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <!--this is for full screen ***************************************  -->
+
+
+    <style name="CollapsAppbar" parent="@android:style/TextAppearance.Medium">
+
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">normal</item>
+        
+    </style>
+
+
+    <style name="ExpandedAppbar" parent="@android:style/TextAppearance.Material.Title">
+
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:background">@color/black_overlay</item>
+
+    </style>
 
 
 </resources>

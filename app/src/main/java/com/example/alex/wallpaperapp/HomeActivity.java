@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-
+import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.adapter.MyFragmentAdapter;
 
 import butterknife.BindView;
