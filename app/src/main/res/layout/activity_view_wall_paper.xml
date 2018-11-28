@@ -17,11 +17,14 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/viewpaperCollapse"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="360dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="?colorPrimary"
+            app:contentScrim="@android:color/black"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+
 
             <ImageView
                 android:id="@+id/viewwallpaper_image"
@@ -30,13 +33,14 @@
                 android:contentDescription="Alex viewpaper"
                 android:scaleType="centerCrop" />
 
+
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                 app:layout_collapseMode="pin"
+                  app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>

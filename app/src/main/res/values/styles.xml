@@ -48,17 +48,16 @@
 
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">normal</item>
-        
+
     </style>
 
-
-    <style name="ExpandedAppbar" parent="@android:style/TextAppearance.Material.Title">
+    <style name="ExpandedAppbar" parent="@android:style/TextAppearance.Material.Display1">
 
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textStyle">normal</item>
         <item name="android:background">@color/black_overlay</item>
+
 
     </style>
 

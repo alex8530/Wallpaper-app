@@ -29,6 +29,7 @@
             android:theme="@style/MyFullScreenTheme" />
         <activity
             android:name=".ViewWallPaperActivity"
+            android:parentActivityName=".ListWallPaperActivity"
             android:label="@string/title_activity_view_wall_paper"
             android:theme="@style/MyFullScreenTheme"></activity>
     </application>

@@ -71,19 +71,21 @@ public class ViewWallPaperActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =   findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
         if (getSupportActionBar()!=null){
-
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         }
 
 
         //init
         mCollapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsAppbar);
-        mCollapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
+         mCollapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
         mCollapsingToolbarLayout.setTitle(Common.CATEGORY_SELECTED);
         Picasso.with(this).load(Common.wallPaperItem.getImageUrl()).into(mImageViewBackground);
 
