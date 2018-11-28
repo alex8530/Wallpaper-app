@@ -9,4 +9,12 @@ public final class Common  {
     public static   String CATEGORY_SELECTED_ID ;
 
     public static WallPaperItem wallPaperItem = new WallPaperItem();
+    public static int PERMISSION_REQUEST_CODE=555;
+
+
+
+
+
+
+
 }

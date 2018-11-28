@@ -1,30 +1,40 @@
 package com.example.alex.wallpaperapp;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.WallpaperManager;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
+import com.example.alex.wallpaperapp.imageProcessing.SaveImageHelper;
 import com.example.alex.wallpaperapp.utils.Common;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 
 
 public class ViewWallPaperActivity extends AppCompatActivity {
@@ -38,8 +48,15 @@ public class ViewWallPaperActivity extends AppCompatActivity {
     @BindView(R.id.viewpaperCoordinatorLayout)
     CoordinatorLayout mCoordinatorLayout;
 
+    @BindView(R.id.viewpaperFabDownload)
+    FloatingActionButton mFabDownlaod;
 
     private Target target= new Target() {
+
+
+ //    Callback when an image has been successfully loaded.
+//    Note: You must not recycle the bitmap.
+
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
 
@@ -99,11 +116,52 @@ public class ViewWallPaperActivity extends AppCompatActivity {
             }
         });
 
+        mFabDownlaod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                //request runtime permission external storage
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        !=PackageManager.PERMISSION_GRANTED)
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},Common.PERMISSION_REQUEST_CODE);
+                    }
+                }
+                else
+                {
 
+                  shoeDailogAndDownloadImage();
+                }
+            }
+        });
+  }
+
+    private void shoeDailogAndDownloadImage() {
+        //this dailog is bettar than normal dialog..
+
+        AlertDialog dialog =  new SpotsDialog.Builder().setContext(ViewWallPaperActivity.this)
+                .setMessage("Downloading..")
+                .build();
+
+        dialog.show();
+
+        String fileNAme= UUID.randomUUID().toString()+".png";
+        Picasso.with(getApplicationContext()).load(Common.wallPaperItem.getImageUrl())
+                .into(new SaveImageHelper(
+                        getApplicationContext(),
+                        dialog,
+                        getContentResolver(),
+                        fileNAme,
+                        "Alex Image"));
 
     }
 
+    @Override
+    protected void onDestroy() {
+        Picasso.with(getApplicationContext()).cancelRequest(target);
+        super.onDestroy();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -115,6 +173,23 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode==Common.PERMISSION_REQUEST_CODE){
+            if (grantResults.length>0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission Granted ", Toast.LENGTH_SHORT).show();
+
+                shoeDailogAndDownloadImage();
+
+            }else {
+                Toast.makeText(this, "You must accept this permission to be able to download images", Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
+
 
 
 

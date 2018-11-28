@@ -23,9 +23,6 @@
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-
-
-
             <ImageView
                 android:id="@+id/viewwallpaper_image"
                 android:layout_width="match_parent"
@@ -34,13 +31,12 @@
                 android:scaleType="centerCrop" />
 
 
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                 app:layout_collapseMode="pin"
-                  app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -57,7 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardElevation="5dp"
-
             app:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -92,6 +87,17 @@
         app:elevation="6dp"
         app:layout_anchor="@id/appbarViewpaper"
         app:layout_anchorGravity="bottom|end"
+        app:pressedTranslationZ="12dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/viewpaperFabDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:backgroundTint="@android:color/white"
+        android:src="@drawable/ic_file_download_black_24dp"
+        app:elevation="6dp"
+        app:layout_anchor="@id/appbarViewpaper"
+        app:layout_anchorGravity="bottom|start"
         app:pressedTranslationZ="12dp" />
 </android.support.design.widget.CoordinatorLayout>
