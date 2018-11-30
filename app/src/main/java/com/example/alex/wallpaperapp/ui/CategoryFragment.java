@@ -1,4 +1,4 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 
 import android.content.Intent;
@@ -12,9 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 import com.example.alex.wallpaperapp.model.Category;
- import com.example.alex.wallpaperapp.utils.Common;
+import com.example.alex.wallpaperapp.utils.Common;
 import com.example.alex.wallpaperapp.viewHolder.CategoryViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

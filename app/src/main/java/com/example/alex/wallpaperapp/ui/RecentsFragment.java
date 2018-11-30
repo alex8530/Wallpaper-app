@@ -1,8 +1,6 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -15,19 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
+import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.adapter.RecentAdapter;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 import com.example.alex.wallpaperapp.model.RecentItem;
-import com.example.alex.wallpaperapp.utils.Common;
 import com.example.alex.wallpaperapp.viewmodel.RecentFragmentViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 /**

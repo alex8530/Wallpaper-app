@@ -1,4 +1,4 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -129,19 +129,4 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//
-//        if (requestCode==Common.PERMISSION_REQUEST_CODE){
-//            if (grantResults.length>0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED){
-//                Toast.makeText(this, "Permission Granted ", Toast.LENGTH_SHORT).show();
-//            }else {
-//                Toast.makeText(this, "You must accept this permission to be able to download images", Toast.LENGTH_LONG).show();
-//            }
-//
-//
-//
-//        }
-//    }
 }

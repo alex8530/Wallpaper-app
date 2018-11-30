@@ -1,4 +1,4 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.alex.wallpaperapp.executer.AppExecutors;
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.database.AppDatabase;
 import com.example.alex.wallpaperapp.imageProcessing.SaveImageHelper;
@@ -44,9 +45,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 

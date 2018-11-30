@@ -1,4 +1,4 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.executer;
 
 /*
  * Copyright (C) 2017 The Android Open Source Project

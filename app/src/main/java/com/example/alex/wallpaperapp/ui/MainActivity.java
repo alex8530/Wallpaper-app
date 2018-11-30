@@ -1,15 +1,13 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
 
 import com.example.alex.wallpaperapp.R;
-import com.example.alex.wallpaperapp.utils.Common;
+import com.example.alex.wallpaperapp.ui.HomeActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.alex.wallpaperapp.R;
-import com.example.alex.wallpaperapp.ViewWallPaperActivity;
+import com.example.alex.wallpaperapp.ui.ViewWallPaperActivity;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
