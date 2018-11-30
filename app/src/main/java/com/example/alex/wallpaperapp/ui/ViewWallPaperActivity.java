@@ -3,11 +3,14 @@ package com.example.alex.wallpaperapp.ui;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.WallpaperManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -76,14 +79,43 @@ public class ViewWallPaperActivity extends AppCompatActivity {
     @BindView(R.id.menuViewFab)
     com.github.clans.fab.FloatingActionMenu floatingActionMenu;
 
-    @BindView(R.id.menuViewFabFacebook)
-    com.github.clans.fab.FloatingActionButton floatingActionButtonFacebook;
+    @BindView(R.id.fabFacebook)
+    com.github.clans.fab.FloatingActionButton fabFacebook;
+    @BindView(R.id.fabInstgram)
+    com.github.clans.fab.FloatingActionButton fabInstgram;
+
+
 
 
 
     //Facebook callback
     CallbackManager callbackManager;
     ShareDialog shareDialog;
+
+    private Target InstgramBitmapConverted = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            //when bitmap ready.. store it in midea to be able to share instgram
+            String bitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"imageIn", null);
+            Uri bitmapUri = Uri.parse(bitmapPath);
+
+            createInstagramIntent(bitmapUri);
+
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
 
     private Target faceboockBitmapConverted = new Target() {
         @Override
@@ -213,7 +245,7 @@ public class ViewWallPaperActivity extends AppCompatActivity {
         increseNubmerViews();
 
 
-        floatingActionButtonFacebook.setOnClickListener(new View.OnClickListener() {
+        fabFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -243,9 +275,45 @@ public class ViewWallPaperActivity extends AppCompatActivity {
                 //i need get image from link and convert to bitmap !!
                 Picasso.with(getApplicationContext()).load(Common.wallPaperItem.getImageUrl())
                         .into(faceboockBitmapConverted);
+
+
+
+
             }
         });
+
+
+        fabInstgram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Picasso.with(getApplicationContext()).load(Common.wallPaperItem.getImageUrl())
+                        .into(InstgramBitmapConverted);
+
+
+            }
+        });
+
+
+
+
   }
+
+    private void createInstagramIntent(Uri uri){
+
+        // Create the new Intent using the 'Send' action.
+        Intent share = new Intent(Intent.ACTION_SEND);
+        //to show only instgram in the Chooser
+        share.setPackage("com.instagram.android");
+
+        share.setType("image/*");
+
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+
+        // Broadcast the Intent.
+        startActivity(Intent.createChooser(share, "Share to"));
+    }
 
     private void increseNubmerViews() {
 
