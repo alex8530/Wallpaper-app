@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.alex.wallpaperapp.CategoryFragment;
-import com.example.alex.wallpaperapp.DailyPopularFragment;
+import com.example.alex.wallpaperapp.TrendingFragment;
 import com.example.alex.wallpaperapp.RecentsFragment;
 
 public class MyFragmentAdapter extends FragmentPagerAdapter {
@@ -27,7 +27,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
             return CategoryFragment.getInstance();
 
         }else if (position==1){
-            return DailyPopularFragment.getInstance();
+            return TrendingFragment.getInstance();
 
         }else if  (position==2){
 
@@ -51,7 +51,7 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
                 tupe= "Category";
                break;
              case 1:
-                tupe= "Daily Popular";
+                tupe= "Trending";
                 break;
              case 2:
                 tupe= "Recents";

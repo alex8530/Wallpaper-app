@@ -163,7 +163,10 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
     private void increseNubmerViews() {
 
-        final DatabaseReference reference =FirebaseDatabase.getInstance().getReference(Common.REF_WALLPAPER).child(Common.WALLPAPERITEM_KEY);
+
+        //this Common.WALLPAPERITEM_KEY must be set from everywhere coming from to this class !!
+        final DatabaseReference reference =FirebaseDatabase.getInstance()
+                .getReference(Common.REF_WALLPAPER).child(Common.WALLPAPERITEM_KEY);
 
 
 
@@ -228,12 +231,22 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
     private void addToRecent() {
 
+
+        final RecentItem recent = new RecentItem();
+        recent.setCategoryId(Common.wallPaperItem.getCategoryId());
+        recent.setImageUrl(Common.wallPaperItem.getImageUrl());
+
+        String lastTimeVisit =String.valueOf(System.currentTimeMillis());
+        recent.setLastTimeVisited(lastTimeVisit);
+        recent.setKey(Common.WALLPAPERITEM_KEY);
+
+
             AppExecutors.getInstance().diskIO().execute(new Runnable() {
                 @Override
                 public void run() {
 
 
-                    AppDatabase.getInstance(getApplicationContext()).recentItemDao().insertRecent(Common.recentItem);
+                    AppDatabase.getInstance(getApplicationContext()).recentItemDao().insertRecent(recent);
                     Log.d(TAG, "run: insert!!!!!!!!");
 
                 }

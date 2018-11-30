@@ -40,12 +40,6 @@ public class RecentAdapter extends RecyclerView.Adapter<WallPaperViewHolder> {
 
 
 
-    public List<RecentItem> getRecentItemsList() {
-        return recentItemsList;
-    }
-
-
-
     @NonNull
     @Override
     public WallPaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
