@@ -19,6 +19,17 @@ public class RecentItem {
     String lastTimeVisited; //i will use this probarty to get last 10 object depend this..
 
 
+
+    /*
+     //we add this key .. because  if we are in ViewWallPAper activity and write
+                // method there to increase number of views..
+                // so we need referance to
+                // get that child ..and if we are here in this class ..
+                // and go to View activity .. we must set the key value to use it for referance child
+                //so we must store the key in  RecentItem to be able to retrive key
+     */
+    String key;
+
     @Ignore
     public RecentItem() {
     }
@@ -60,5 +71,14 @@ public class RecentItem {
                 ", categoryId='" + categoryId + '\'' +
                 ", lastTimeVisited='" + lastTimeVisited + '\'' +
                 '}';
+    }
+
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

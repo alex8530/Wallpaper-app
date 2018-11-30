@@ -17,4 +17,6 @@ public final class Common  {
 
     public static RecentItem recentItem= new RecentItem();
 
+    public static String WALLPAPERITEM_KEY;
+
 }

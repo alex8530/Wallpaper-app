@@ -113,6 +113,7 @@ public class ListWallPaperActivity extends AppCompatActivity {
                         //for details
                         startActivity(new Intent(getApplicationContext(),ViewWallPaperActivity.class));
 
+                        String key= adapter.getRef(position).getKey();
                         //there are two object here ..
 
 
@@ -127,7 +128,16 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
                         String lastTimeVisit =String.valueOf(System.currentTimeMillis());
                         recent.setLastTimeVisited(lastTimeVisit);
+                        recent.setKey(key);//this use for referance this child in view activity
                         Common.recentItem=recent;
+
+
+                        /**
+                         *   and this key we need it for increse number of view from view activity ..
+                         *     so  we need the key of that child for referance it
+                         *     we need to set this value from  all places that we are go from it ..so from this class  and  RecentsFragment .(inside its adapter)
+                         */
+                        Common.WALLPAPERITEM_KEY=key;
                     }
                 });
 

@@ -108,6 +108,14 @@ public class RecentAdapter extends RecyclerView.Adapter<WallPaperViewHolder> {
                 wallPaperItem.setCategoryId(recentItemsList.get(position).getCategoryId());
                 wallPaperItem.setImageUrl(recentItemsList.get(position).getImageUrl());
                 Common.wallPaperItem = wallPaperItem;
+
+                //we add this key .. because  if we are in ViewWallPAper activity and write
+                // method there to increase number of views..
+                // so we need referance to
+                // get that child ..and if we are here in this class ..
+                // and go to View activity .. we must set the key value to use it for referance child
+                //so we must store the key in  RecentItem to be able to retrive key
+                 Common.WALLPAPERITEM_KEY=recentItemsList.get(position).getKey();
             }
         });
     }

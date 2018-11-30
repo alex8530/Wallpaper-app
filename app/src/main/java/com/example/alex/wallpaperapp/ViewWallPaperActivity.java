@@ -26,11 +26,21 @@ import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.database.AppDatabase;
 import com.example.alex.wallpaperapp.imageProcessing.SaveImageHelper;
 import com.example.alex.wallpaperapp.model.RecentItem;
+import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -148,7 +158,73 @@ public class ViewWallPaperActivity extends AppCompatActivity {
          */
 
         addToRecent();
+        increseNubmerViews();
   }
+
+    private void increseNubmerViews() {
+
+        final DatabaseReference reference =FirebaseDatabase.getInstance().getReference(Common.REF_WALLPAPER).child(Common.WALLPAPERITEM_KEY);
+
+
+
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.hasChild("numberViews"))
+                        {
+
+                            WallPaperItem wallPaperItem= dataSnapshot.getValue(WallPaperItem.class);
+                            assert wallPaperItem != null;
+                            long numberViews= wallPaperItem.getNumberViews()+1;
+
+                            //ubdate now
+                            Map<String,Object> map= new HashMap<>();
+                            map.put("numberViews",numberViews);
+
+                            reference.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(ViewWallPaperActivity.this, "Faild to updated View Number", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
+                        }
+                        else //if numberVIews not init .. set to 1
+
+                       {
+
+                           Map<String,Object> map= new HashMap<>();
+                           map.put("numberViews",1);
+
+                           reference.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                               @Override
+                               public void onSuccess(Void aVoid) {
+
+                               }
+                           }).addOnFailureListener(new OnFailureListener() {
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+                                   Toast.makeText(ViewWallPaperActivity.this, "Faild to set View Number", Toast.LENGTH_SHORT).show();
+                               }
+                           });
+
+
+                       }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+    }
 
     private void addToRecent() {
 
