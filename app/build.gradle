@@ -62,4 +62,15 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 
 
+    //facebook lib share
+    implementation 'com.facebook.android:facebook-share:[4,5)'
+
+
+
+    //FloatingActionButton lib
+    implementation 'com.github.clans:fab:1.6.4'
+
+
+
+
 }

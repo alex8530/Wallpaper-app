@@ -11,12 +11,9 @@ public final class Common  {
     public static   String CATEGORY_SELECTED ;
     public static   String CATEGORY_SELECTED_ID ;
 
-    public static WallPaperItem wallPaperItem = new WallPaperItem();
     public static int PERMISSION_REQUEST_CODE=555;
 
-
-    public static RecentItem recentItem= new RecentItem();
-
+    public static WallPaperItem wallPaperItem = new WallPaperItem();
     public static String WALLPAPERITEM_KEY;
 
 }

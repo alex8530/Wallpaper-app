@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -29,7 +30,15 @@ import com.example.alex.wallpaperapp.imageProcessing.SaveImageHelper;
 import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
+
+ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,6 +71,46 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
     @BindView(R.id.viewpaperFabDownload)
     FloatingActionButton mFabDownlaod;
+
+
+    @BindView(R.id.menuViewFab)
+    com.github.clans.fab.FloatingActionMenu floatingActionMenu;
+
+    @BindView(R.id.menuViewFabFacebook)
+    com.github.clans.fab.FloatingActionButton floatingActionButtonFacebook;
+
+
+
+    //Facebook callback
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
+
+    private Target faceboockBitmapConverted = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            SharePhoto sharePhoto= new SharePhoto.Builder()
+                    .setBitmap(bitmap).build();
+            if (ShareDialog.canShow(SharePhotoContent.class))
+            {
+                SharePhotoContent sharePhotoContent=  new SharePhotoContent.Builder()
+                        .addPhoto(sharePhoto)
+                        .build();
+                shareDialog.show(sharePhotoContent);
+            }
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
 
     private Target target= new Target() {
 
@@ -111,6 +160,10 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
         }
 
+        //init faacebook
+        callbackManager= CallbackManager.Factory.create();
+        shareDialog= new ShareDialog(this);
+
 
         //init
         mCollapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsAppbar);
@@ -158,6 +211,40 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
         addToRecent();
         increseNubmerViews();
+
+
+        floatingActionButtonFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //callback create
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Toast.makeText(ViewWallPaperActivity.this, "Succesfuly Share !", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(ViewWallPaperActivity.this, "Share Cancel !", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+
+                        Toast.makeText(ViewWallPaperActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+                //i need get image from link and convert to bitmap !!
+                Picasso.with(getApplicationContext()).load(Common.wallPaperItem.getImageUrl())
+                        .into(faceboockBitmapConverted);
+            }
+        });
   }
 
     private void increseNubmerViews() {
