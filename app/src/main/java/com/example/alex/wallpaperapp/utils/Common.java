@@ -1,5 +1,8 @@
 package com.example.alex.wallpaperapp.utils;
 
+import android.content.Context;
+
+import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 
 public final class Common  {
@@ -12,9 +15,6 @@ public final class Common  {
     public static int PERMISSION_REQUEST_CODE=555;
 
 
-
-
-
-
+    public static RecentItem recentItem= new RecentItem();
 
 }

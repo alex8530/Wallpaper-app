@@ -14,9 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
+import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
-import com.example.alex.wallpaperapp.viewHolder.WallPaperViewModel;
+import com.example.alex.wallpaperapp.viewHolder.WallPaperViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,7 +29,7 @@ import com.squareup.picasso.Picasso;
 public class ListWallPaperActivity extends AppCompatActivity {
     private static final String TAG = "ListWallPaperActivity";
     Query query;
-    FirebaseRecyclerAdapter<WallPaperItem,WallPaperViewModel> adapter;
+    FirebaseRecyclerAdapter<WallPaperItem,WallPaperViewHolder> adapter;
     FirebaseRecyclerOptions<WallPaperItem> options;
 
 
@@ -69,9 +70,9 @@ public class ListWallPaperActivity extends AppCompatActivity {
                 .setQuery(query, WallPaperItem.class)
                 .build();
 
-        adapter= new FirebaseRecyclerAdapter<WallPaperItem, WallPaperViewModel>(options) {
+        adapter= new FirebaseRecyclerAdapter<WallPaperItem, WallPaperViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final WallPaperViewModel holder, int position, @NonNull final WallPaperItem model) {
+            protected void onBindViewHolder(@NonNull final WallPaperViewHolder holder, int position, @NonNull final WallPaperItem model) {
 
                 Picasso.with(getApplicationContext()).load(model.getImageUrl())
                         .networkPolicy(NetworkPolicy.OFFLINE)
@@ -111,7 +112,22 @@ public class ListWallPaperActivity extends AppCompatActivity {
                     public void onClick(View view, int position) {
                         //for details
                         startActivity(new Intent(getApplicationContext(),ViewWallPaperActivity.class));
+
+                        //there are two object here ..
+
+
+                        //this one for view activity and get details from it
                         Common.wallPaperItem = model;
+
+
+                        //this one for view activity but to get detailes from it to add to recent fragment
+                        RecentItem recent = new RecentItem();
+                        recent.setCategoryId(model.getCategoryId());
+                        recent.setImageUrl(model.getImageUrl());
+
+                        String lastTimeVisit =String.valueOf(System.currentTimeMillis());
+                        recent.setLastTimeVisited(lastTimeVisit);
+                        Common.recentItem=recent;
                     }
                 });
 
@@ -119,7 +135,7 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public WallPaperViewModel onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public WallPaperViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
                 View view = LayoutInflater.from(parent.getContext()).
@@ -129,7 +145,7 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
                 view.setMinimumHeight(hight);
 
-                return new WallPaperViewModel(view);
+                return new WallPaperViewHolder(view);
             }
         };
 

@@ -16,13 +16,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
+import com.example.alex.wallpaperapp.database.AppDatabase;
 import com.example.alex.wallpaperapp.imageProcessing.SaveImageHelper;
+import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.utils.Common;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -38,7 +41,7 @@ import dmax.dialog.SpotsDialog;
 
 
 public class ViewWallPaperActivity extends AppCompatActivity {
-
+    private static final String TAG = "ViewWallPaperActivity";
     @BindView(R.id.viewpaperCollapse)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @BindView(R.id.viewpaperFab)
@@ -135,7 +138,34 @@ public class ViewWallPaperActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        /**
+         *
+         * Now, after i click on image wall paper .. i need to add this image to recent fragemnt .. so
+         * i will insert in database with new object
+         *
+         */
+
+        addToRecent();
   }
+
+    private void addToRecent() {
+
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+
+
+                    AppDatabase.getInstance(getApplicationContext()).recentItemDao().insertRecent(Common.recentItem);
+                    Log.d(TAG, "run: insert!!!!!!!!");
+
+                }
+            });
+
+
+
+    }
 
     private void shoeDailogAndDownloadImage() {
         //this dailog is bettar than normal dialog..

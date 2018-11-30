@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 
 import com.example.alex.wallpaperapp.R;
+import com.example.alex.wallpaperapp.utils.Common;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
 
         //this is for splash screen
         new Handler().postDelayed(new Runnable() {

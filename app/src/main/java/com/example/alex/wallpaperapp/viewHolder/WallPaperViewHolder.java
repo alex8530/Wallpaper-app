@@ -8,11 +8,10 @@ import android.widget.TextView;
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 
-public class WallPaperViewModel extends RecyclerView.ViewHolder implements View.OnClickListener  {
+public class WallPaperViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
 
     public ImageView imgbackground;
-
 
     MyItemClickListener myItemClickListener;
 
@@ -20,7 +19,7 @@ public class WallPaperViewModel extends RecyclerView.ViewHolder implements View.
         this.myItemClickListener = myItemClickListener;
     }
 
-    public WallPaperViewModel(View itemView) {
+    public WallPaperViewHolder(View itemView) {
         super(itemView);
 
         imgbackground= itemView.findViewById(R.id.wallpaper_item_image);
@@ -30,8 +29,10 @@ public class WallPaperViewModel extends RecyclerView.ViewHolder implements View.
 
     @Override
     public void onClick(View v) {
+        if (myItemClickListener!=null){
+            myItemClickListener.onClick(v,getAdapterPosition());
+        }
 
-        myItemClickListener.onClick(v,getAdapterPosition());
 
     }
 }
