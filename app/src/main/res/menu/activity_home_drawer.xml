@@ -11,6 +11,11 @@
                 android:icon="@drawable/ic_photo_album_black_24dp"
                 android:title="See Your Photos" />
 
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Sign Out" />
+
         </menu>
     </item>
 

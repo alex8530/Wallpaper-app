@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,13 +35,14 @@ import com.example.alex.wallpaperapp.utils.Common;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.util.ExtraConstants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static android.app.Activity.RESULT_OK;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,7 +51,7 @@ public class HomeActivity extends AppCompatActivity
     ViewPager mViewPager;
     @BindView(R.id.tabLayout)
     TabLayout mTabLayout;
-
+    @BindView(android.R.id.content) View mRootView;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
@@ -108,7 +111,11 @@ public class HomeActivity extends AppCompatActivity
       if (currentUSer!=null){
           View view=   navigationView.getHeaderView(0);
           TextView txt_email = view.findViewById(R.id.nav_email);
+          ImageView mUserProfilePicture=view.findViewById(R.id.user_profile_picture);
+
           txt_email.setText(currentUSer.getEmail());
+          Picasso.with(this).load(currentUSer.getPhotoUrl()) .into(mUserProfilePicture) ;
+
           String messamge="Welcome "+ currentUSer.getEmail() ;
           Snackbar.make(drawer ,messamge,Snackbar.LENGTH_LONG).show();
       }
@@ -174,14 +181,36 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_photos) {
-            // Handle the camera action
+          // Handle the camera action
+
+        }else if (id == R.id.nav_sign_out){
+            signOut();
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    private void signOut() {
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(AuthUiActivity.createIntent(HomeActivity.this));
+                            finish();
+                        } else {
+                            Log.w(TAG, "signOut:failure", task.getException());
+                            showSnackbar(R.string.sign_out_failed);
+                        }
+                    }
+                });
+    }
+    private void showSnackbar(@StringRes int errorMessageRes) {
+        Snackbar.make(mRootView, errorMessageRes, Snackbar.LENGTH_LONG).show();
+    }
 
 }
