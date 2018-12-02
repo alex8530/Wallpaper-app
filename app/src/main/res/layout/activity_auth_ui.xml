@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AuthUiActivity">
 
-            <Button
-                android:id="@+id/sign_in"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_gravity="center"
-                android:text="@string/fui_sign_in_with_google" />
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/sign_in_img_bk"
+        android:id="@+id/main_background"/>
 
 
-</android.support.design.widget.CoordinatorLayout>
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_in"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="50dp"
+        android:text="@string/google_sign_in"
+        app:isDarkTheme="false" />
+
+</FrameLayout>

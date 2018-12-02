@@ -68,5 +68,9 @@ dependencies {
     //FloatingActionButton lib
     implementation 'com.github.clans:fab:1.6.4'
 
+    //google sign in button style
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
+
+
 
 }
