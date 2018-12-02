@@ -71,6 +71,9 @@ dependencies {
     //google sign in button style
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
 
+    //circleimageview
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 
 
 }

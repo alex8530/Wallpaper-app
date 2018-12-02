@@ -4,6 +4,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -40,6 +44,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -114,7 +119,7 @@ public class HomeActivity extends AppCompatActivity
           ImageView mUserProfilePicture=view.findViewById(R.id.user_profile_picture);
 
           txt_email.setText(currentUSer.getEmail());
-          Picasso.with(this).load(currentUSer.getPhotoUrl()) .into(mUserProfilePicture) ;
+          Picasso.with(this).load(currentUSer.getPhotoUrl())  .into(mUserProfilePicture) ;
 
           String messamge="Welcome "+ currentUSer.getEmail() ;
           Snackbar.make(drawer ,messamge,Snackbar.LENGTH_LONG).show();
@@ -212,5 +217,7 @@ public class HomeActivity extends AppCompatActivity
     private void showSnackbar(@StringRes int errorMessageRes) {
         Snackbar.make(mRootView, errorMessageRes, Snackbar.LENGTH_LONG).show();
     }
+
+
 
 }
