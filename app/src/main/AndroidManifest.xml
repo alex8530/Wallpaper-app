@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.alex.wallpaperapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,14 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyFullScreenTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_id"
+            tools:replace="android:value" />
 
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_id"></meta-data>
-
-        <provider android:authorities="com.facebook.app.FacebookContentProvider2146744878922212"
+        <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider2146744878922212"
+            android:exported="true" />
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -41,9 +40,10 @@
             android:theme="@style/MyFullScreenTheme" />
         <activity
             android:name=".ui.ViewWallPaperActivity"
-            android:parentActivityName=".ui.ListWallPaperActivity"
             android:label="@string/title_activity_view_wall_paper"
-            android:theme="@style/MyFullScreenTheme"></activity>
+            android:parentActivityName=".ui.ListWallPaperActivity"
+            android:theme="@style/MyFullScreenTheme" />
+        <activity android:name=".ui.AuthUiActivity"></activity>
     </application>
 
 </manifest>
