@@ -16,12 +16,16 @@ import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.model.Category;
+import com.example.alex.wallpaperapp.model.User;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -30,11 +34,13 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -65,6 +71,9 @@ public class UploadPhotoActivity extends AppCompatActivity {
 
     Map<String, String> spinnerMap= new HashMap<>();
 
+    DatabaseReference userReference;
+    FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +85,9 @@ public class UploadPhotoActivity extends AppCompatActivity {
         mStorage= FirebaseStorage.getInstance();
         storageReference= mStorage.getReference();
 
-        loadCategoryToSpinner();
+        currentUser =FirebaseAuth.getInstance().getCurrentUser();
 
+        loadCategoryToSpinner();
 
     }
 
@@ -117,8 +127,14 @@ public class UploadPhotoActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                         progressDialog.dismiss();
-                        saveUrlToCategory(categoryIdSelected,taskSnapshot.getDownloadUrl().toString());
-                        //todo also add to user image
+                         String imgUrl=taskSnapshot.getDownloadUrl().toString();
+
+                        saveUrlToCategory(categoryIdSelected,imgUrl );
+
+                        //also insert into user database
+                        saveToOwnUserImage( imgUrl);
+                        finish();
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -134,12 +150,28 @@ public class UploadPhotoActivity extends AppCompatActivity {
                         progressDialog.setMessage("Uploaded :  "+(int)progress + "%");
                     }
                 });
+
+
             }
         }
 
 
 
+    }
 
+    private void saveToOwnUserImage(final String imgUrl) {
+
+
+        FirebaseDatabase.getInstance().getReference("UsersImages")
+                .child(currentUser.getUid())
+                .push()
+                .setValue(imgUrl)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        });
     }
 
     private void saveUrlToCategory(String categoryIdSelected, String imageUrl) {

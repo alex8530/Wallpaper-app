@@ -6,10 +6,7 @@
 
     <item android:title="Managment">
         <menu>
-            <item
-                android:id="@+id/nav_photos"
-                android:icon="@drawable/ic_photo_album_black_24dp"
-                android:title="See Your Photos" />
+
 
             <item
                 android:id="@+id/nav_sign_out"

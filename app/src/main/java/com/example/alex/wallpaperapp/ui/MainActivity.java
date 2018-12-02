@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.ui.HomeActivity;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },1000);
+
+
 
 
     }

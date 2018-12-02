@@ -212,11 +212,7 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_photos) {
-          // Handle the camera action
-
-        }else if (id == R.id.nav_sign_out){
+       if (id == R.id.nav_sign_out){
             signOut();
 
         }
