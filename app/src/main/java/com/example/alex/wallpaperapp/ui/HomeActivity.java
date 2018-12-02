@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -48,6 +49,7 @@ import com.squareup.picasso.Transformation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +67,9 @@ public class HomeActivity extends AppCompatActivity
     NavigationView navigationView;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
+
+    @BindView(R.id.bottomNavigation)
+    BottomNavigationView bottomNavigation;
 
     public static final String IDP_RESPONSE = "extra_idp_response";
 
@@ -85,16 +90,39 @@ public class HomeActivity extends AppCompatActivity
         ButterKnife.bind(this);
 
 
-
-        toolbar.setTitle("ALEX WallPaper");
-        setSupportActionBar(toolbar);
-        ButterKnife.bind(this);
-
+        setUpToolBar();
         setUpActionBarDrawerToggle();
 
         setUpTapLayout();
 
+
+
+
         loadUserInfo();
+
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+                if (item.getItemId()==R.id.action_upload){
+                    startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+                    return true;
+
+                }
+                return false;
+            }
+        });
+
+    }
+
+
+
+    private void setUpToolBar() {
+
+        toolbar.setTitle("ALEX WallPaper");
+        setSupportActionBar(toolbar);
+
     }
 
     private void setUpTapLayout() {

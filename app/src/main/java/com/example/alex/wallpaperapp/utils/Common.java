@@ -17,4 +17,6 @@ public final class Common  {
     public static WallPaperItem wallPaperItem = new WallPaperItem();
     public static String WALLPAPERITEM_KEY;
 
+
+    public static final int CHOOSE_IMAGE_REQUEST_CODE = 456;
 }
