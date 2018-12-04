@@ -1,8 +1,10 @@
 package com.example.alex.wallpaperapp.utils;
 
 import android.content.Context;
+import android.net.Uri;
 
 import com.example.alex.wallpaperapp.model.RecentItem;
+import com.example.alex.wallpaperapp.model.UserImage;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 
 public final class Common  {
@@ -19,4 +21,9 @@ public final class Common  {
 
 
     public static final int CHOOSE_IMAGE_REQUEST_CODE = 456;
+    public static UserImage userImage= new UserImage();
+    public static String DELETE_KEY_IMAGE_USER="";
+
+
+    public static String PATH_FILE_IMAGE;
 }
