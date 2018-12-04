@@ -1,10 +1,16 @@
 package com.example.alex.wallpaperapp.ui;
 
+import android.app.WallpaperManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
@@ -17,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +39,13 @@ public class ViewUserImageActivity extends AppCompatActivity {
     FirebaseUser currentUser;
     @BindView(R.id.user_image_background)
     ImageView imageView;
+
+
+    @BindView(R.id.fabUserSetWallpaper)
+    com.github.clans.fab.FloatingActionButton  mFab;
+
+    @BindView(R.id.userRootRelativeLayout)
+    RelativeLayout mRootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +65,18 @@ public class ViewUserImageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Picasso.with(getApplicationContext()).load(Common.userImage.getImageURL()).into(target);
+            }
+        });
+
+
+
     }
 
     private void loadImage() {
@@ -83,4 +111,34 @@ public class ViewUserImageActivity extends AppCompatActivity {
 
 
     }
+
+    private Target target= new Target() {
+
+
+        //    Callback when an image has been successfully loaded.
+
+
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            WallpaperManager manager = WallpaperManager.getInstance(getApplicationContext());
+            try {
+                manager.setBitmap(bitmap);
+                Snackbar.make(mRootView,"WallPaper was Successfully Set !!",Snackbar.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
 }

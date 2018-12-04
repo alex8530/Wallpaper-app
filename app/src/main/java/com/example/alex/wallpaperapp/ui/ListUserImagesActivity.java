@@ -127,9 +127,6 @@ public class ListUserImagesActivity extends AppCompatActivity {
                     }
                 });
 
-                Log.d(TAG, "ListUserImagesActivity: " +model.getImageURL());
-                Toast.makeText(ListUserImagesActivity.this, model.getImageURL(), Toast.LENGTH_SHORT).show();
-
 
             }
             @NonNull

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/userRootRelativeLayout"
     android:layout_height="match_parent"
     tools:context=".ui.ViewUserImageActivity">
 
@@ -66,6 +67,16 @@
             fab:fab_colorNormal="#fff"
             fab:fab_label="Delete"
             fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabUserSetWallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wallpaper_black_24dp"
+            fab:fab_colorNormal="#fff"
+            fab:fab_label="Set As Background"
+            fab:fab_size="mini" />
+
 
     </com.github.clans.fab.FloatingActionMenu>
 

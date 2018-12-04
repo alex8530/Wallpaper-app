@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.executer.AppExecutors;
@@ -76,6 +77,8 @@ public class ViewWallPaperActivity extends AppCompatActivity {
     FloatingActionButton mFabDownlaod;
 
 
+
+
     @BindView(R.id.menuViewFab)
     com.github.clans.fab.FloatingActionMenu floatingActionMenu;
 
@@ -92,86 +95,6 @@ public class ViewWallPaperActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     ShareDialog shareDialog;
 
-    private Target InstgramBitmapConverted = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-
-            //when bitmap ready.. store it in midea to be able to share instgram
-            String bitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"imageIn", null);
-            Uri bitmapUri = Uri.parse(bitmapPath);
-
-            createInstagramIntent(bitmapUri);
-
-
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
-
-
-    private Target faceboockBitmapConverted = new Target() {
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-
-            SharePhoto sharePhoto= new SharePhoto.Builder()
-                    .setBitmap(bitmap).build();
-            if (ShareDialog.canShow(SharePhotoContent.class))
-            {
-                SharePhotoContent sharePhotoContent=  new SharePhotoContent.Builder()
-                        .addPhoto(sharePhoto)
-                        .build();
-                shareDialog.show(sharePhotoContent);
-            }
-
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
-
-    private Target target= new Target() {
-
-
- //    Callback when an image has been successfully loaded.
-//    Note: You must not recycle the bitmap.
-
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-
-            WallpaperManager manager = WallpaperManager.getInstance(getApplicationContext());
-            try {
-                manager.setBitmap(bitmap);
-                Snackbar.make(mCoordinatorLayout,"WallPaper was Successfully Set !!",Snackbar.LENGTH_LONG).show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-        }
-    };
 
 
     @Override
@@ -464,6 +387,86 @@ public class ViewWallPaperActivity extends AppCompatActivity {
     }
 
 
+    private Target InstgramBitmapConverted = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            //when bitmap ready.. store it in midea to be able to share instgram
+            String bitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"imageIn", null);
+            Uri bitmapUri = Uri.parse(bitmapPath);
+
+            createInstagramIntent(bitmapUri);
+
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
+
+    private Target faceboockBitmapConverted = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            SharePhoto sharePhoto= new SharePhoto.Builder()
+                    .setBitmap(bitmap).build();
+            if (ShareDialog.canShow(SharePhotoContent.class))
+            {
+                SharePhotoContent sharePhotoContent=  new SharePhotoContent.Builder()
+                        .addPhoto(sharePhoto)
+                        .build();
+                shareDialog.show(sharePhotoContent);
+            }
+
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
+    private Target target= new Target() {
+
+
+        //    Callback when an image has been successfully loaded.
+//    Note: You must not recycle the bitmap.
+
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            WallpaperManager manager = WallpaperManager.getInstance(getApplicationContext());
+            try {
+                manager.setBitmap(bitmap);
+                Snackbar.make(mCoordinatorLayout,"WallPaper was Successfully Set !!",Snackbar.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
 
 
 }
