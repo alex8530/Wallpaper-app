@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/action_news"
-        android:icon="@drawable/ic_event_note_black_24dp"
-        android:title="News" />
 
-    <item
-        android:id="@+id/action_explore"
-        android:icon="@drawable/ic_explore_black_24dp"
-        android:title="Explore" />
+
 
     <item
         android:id="@+id/action_upload"
