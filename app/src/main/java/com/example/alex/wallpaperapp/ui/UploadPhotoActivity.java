@@ -18,6 +18,7 @@ import com.example.alex.wallpaperapp.model.Category;
 import com.example.alex.wallpaperapp.model.UserImage;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
 import com.example.alex.wallpaperapp.utils.Common;
+import com.example.alex.wallpaperapp.utils.Connectivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -171,42 +172,47 @@ public class UploadPhotoActivity extends AppCompatActivity {
     @OnClick(R.id.upload_btn)
     public void upload(){
 
-            if (filePath !=null){
-                final ProgressDialog  progressDialog= new ProgressDialog(this);
-                progressDialog.setTitle("Uploading..");
-                progressDialog.show();
-                String pathImage="images/" + UUID.randomUUID().toString();
+       if (!Connectivity.isConnectedWifi(this)){
 
-                StorageReference  reference= storageReference.child(pathImage);
+           Toast.makeText(this, "No Internot Connection", Toast.LENGTH_SHORT).show();
+       }else {
+           if (filePath !=null){
+               final ProgressDialog  progressDialog= new ProgressDialog(this);
+               progressDialog.setTitle("Uploading..");
+               progressDialog.show();
+               String pathImage="images/" + UUID.randomUUID().toString();
 
-                reference.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+               StorageReference  reference= storageReference.child(pathImage);
 
-                        progressDialog.dismiss();
-                        String imgUrl=taskSnapshot.getDownloadUrl().toString();
+               reference.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                   @Override
+                   public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        saveToOwnUserImage( imgUrl);
-                        finish();
+                       progressDialog.dismiss();
+                       String imgUrl=taskSnapshot.getDownloadUrl().toString();
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressDialog.dismiss();
-                        Toast.makeText(UploadPhotoActivity.this, "Error While uploading Image.."+e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                       saveToOwnUserImage( imgUrl);
+                       finish();
 
-                        progressDialog.setMessage("Uploaded :  "+(int)progress + "%");
-                    }
-                });
+                   }
+               }).addOnFailureListener(new OnFailureListener() {
+                   @Override
+                   public void onFailure(@NonNull Exception e) {
+                       progressDialog.dismiss();
+                       Toast.makeText(UploadPhotoActivity.this, "Error While uploading Image.."+e.getMessage(), Toast.LENGTH_LONG).show();
+                   }
+               }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                   @Override
+                   public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                       double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                       progressDialog.setMessage("Uploaded :  "+(int)progress + "%");
+                   }
+               });
 
 
-            }
+           }
+       }
 
 
 

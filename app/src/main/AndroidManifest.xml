@@ -45,9 +45,11 @@
             android:theme="@style/MyFullScreenTheme" />
         <activity android:name=".ui.AuthUiActivity" />
         <activity android:name=".ui.UploadPhotoActivity" />
-        <activity android:name=".ui.ListUserImagesActivity"
+        <activity
+            android:name=".ui.ListUserImagesActivity"
             android:theme="@style/MyFullScreenTheme" />
-        <activity android:name=".ui.ViewUserImageActivity"></activity>
+        <activity android:name=".ui.ViewUserImageActivity" />
+        <activity android:name=".ui.NoInternetActivity"></activity>
     </application>
 
 </manifest>

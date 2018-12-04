@@ -1,7 +1,10 @@
 package com.example.alex.wallpaperapp.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -10,6 +13,7 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -23,11 +27,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.adapter.MyFragmentAdapter;
 import com.example.alex.wallpaperapp.utils.Common;
+import com.example.alex.wallpaperapp.utils.Connectivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,6 +65,8 @@ public class HomeActivity extends AppCompatActivity
     @BindView(R.id.bottomNavigation)
     BottomNavigationView bottomNavigation;
 
+
+
     public static final String IDP_RESPONSE = "extra_idp_response";
 
     FirebaseUser currentUSer;
@@ -74,8 +82,27 @@ public class HomeActivity extends AppCompatActivity
             return;
         }
 
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                !=PackageManager.PERMISSION_GRANTED)
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},Common.PERMISSION_REQUEST_CODE);
+            }
+        }
+
+
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
+        Common.checkInternetAndHandelViewInternet(this);
+
+        if (!Connectivity.isConnectedWifi(this)){
+            //if he go to the noInternet activity and not connect to internet and juest press back ..
+            //so here check another one..
+            finish();
+
+            Toast.makeText(this, "please check your conniection ", Toast.LENGTH_SHORT).show();
+        }
 
 
         setUpToolBar();
@@ -94,6 +121,7 @@ public class HomeActivity extends AppCompatActivity
 
 
                 if (item.getItemId()==R.id.action_upload){
+
                     startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
                     return true;
 
@@ -188,7 +216,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_aboutMe) {
             return true;
         }
 
@@ -205,7 +233,12 @@ public class HomeActivity extends AppCompatActivity
 
         }
         if (id == R.id.nav_images){
-            goToImagesUser();
+           if (Connectivity.isConnectedWifi(this)){
+               goToImagesUser();
+           }else {
+               Toast.makeText(this, "No Internot Connection", Toast.LENGTH_SHORT).show();
+           }
+
 
         }
 
@@ -240,5 +273,19 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        if (requestCode==Common.PERMISSION_REQUEST_CODE){
+            if (grantResults.length>0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Permission Granted ", Toast.LENGTH_SHORT).show();
+
+
+            }else {
+                Toast.makeText(this, "You must accept this permission to be able to download images", Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
 }

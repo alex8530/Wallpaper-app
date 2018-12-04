@@ -1,6 +1,7 @@
 package com.example.alex.wallpaperapp.ui;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,11 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
 import com.example.alex.wallpaperapp.model.Category;
 import com.example.alex.wallpaperapp.utils.Common;
+import com.example.alex.wallpaperapp.utils.Connectivity;
 import com.example.alex.wallpaperapp.viewHolder.CategoryViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -49,8 +53,9 @@ public class CategoryFragment extends Fragment {
     RecyclerView recyclerViewCategory;
 
 
+
     public CategoryFragment() {
-        Log.d(TAG, "CategoryFragment:cons ");
+
 
 
         database=FirebaseDatabase.getInstance();
@@ -61,14 +66,15 @@ public class CategoryFragment extends Fragment {
 
 
         options = new FirebaseRecyclerOptions.Builder<Category>()
-                        .setQuery(categoriesBakeground, Category.class)
+                        .setQuery(query, Category.class)
                         .build();
 
         adapter= new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(options) {
              @Override
             protected void onBindViewHolder(@NonNull final CategoryViewHolder holder, int position, @NonNull final Category model) {
+                 Common.checkInternetAndHandelViewInternet(getActivity());
 
-                Log.d(TAG, "onBindViewHolder: ");
+
                 Picasso.with(getActivity()).load(model.getImageLink())
                         .networkPolicy(NetworkPolicy.OFFLINE)
                         .into(holder.imgbackground, new Callback() {
@@ -91,7 +97,6 @@ public class CategoryFragment extends Fragment {
 
                                             @Override
                                             public void onError() {
-                                                Log.d(TAG, "onError:  not able to load image"  );
 
                                             }
 
@@ -104,7 +109,7 @@ public class CategoryFragment extends Fragment {
 
                 holder.tvName.setText(model.getName());
 
-                Log.d(TAG, "onBindViewHolder: "+ model.getName());
+
 
                 holder.setMyItemClickListener(new MyItemClickListener() {
                     @Override
@@ -146,11 +151,11 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView: ");
+
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_category, container, false);
          ButterKnife.bind(this,view);
-         recyclerViewCategory.setHasFixedSize(true);
+        recyclerViewCategory.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),2);
         recyclerViewCategory.setLayoutManager(gridLayoutManager);
         adapter.startListening();
@@ -160,6 +165,7 @@ public class CategoryFragment extends Fragment {
 
         return view;
     }
+
 
     @Override
     public void onStart() {
@@ -184,5 +190,7 @@ public class CategoryFragment extends Fragment {
         if (adapter!=null){
             adapter.startListening();
         }
+
+
     }
 }

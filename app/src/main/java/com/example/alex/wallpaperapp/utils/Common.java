@@ -1,11 +1,14 @@
 package com.example.alex.wallpaperapp.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.model.RecentItem;
 import com.example.alex.wallpaperapp.model.UserImage;
 import com.example.alex.wallpaperapp.model.WallPaperItem;
+import com.example.alex.wallpaperapp.ui.NoInternetActivity;
 
 public final class Common  {
     public static final String REF_CATEGORY_BACKGROUND="CategoryBackground";
@@ -26,4 +29,21 @@ public final class Common  {
 
 
     public static String PATH_FILE_IMAGE;
+
+
+
+
+
+
+
+    public static void  checkInternetAndHandelViewInternet(Context context) {
+        if (Connectivity.isConnected(context )&&Connectivity.isConnectedWifi(context)){
+
+        }else {
+            context.startActivity(new Intent(context,NoInternetActivity.class));
+            Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

@@ -145,6 +145,7 @@ public class TrendingFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_trending, container, false);
         ButterKnife.bind(this,view);
 
+
         recyclerViewTrending.setHasFixedSize(true);
         LinearLayoutManager layoutManager= new LinearLayoutManager(getActivity());
         //we need to reverse the order because is order assending and we want the first one be large!!
