@@ -60,6 +60,9 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/icon_app_widget_info" />
         </receiver>
+
+        <activity android:name=".AboutActivity"
+            android:parentActivityName=".ui.HomeActivity"></activity>
     </application>
 
 </manifest>
