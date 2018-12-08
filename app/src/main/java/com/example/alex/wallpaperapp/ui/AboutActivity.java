@@ -1,4 +1,4 @@
-package com.example.alex.wallpaperapp;
+package com.example.alex.wallpaperapp.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.utils.Common;
 import com.facebook.AccessToken;
 

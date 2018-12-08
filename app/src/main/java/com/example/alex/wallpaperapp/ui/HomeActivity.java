@@ -30,7 +30,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.alex.wallpaperapp.AboutActivity;
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.adapter.MyFragmentAdapter;
 import com.example.alex.wallpaperapp.utils.Common;

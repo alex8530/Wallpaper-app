@@ -61,7 +61,7 @@
                 android:resource="@xml/icon_app_widget_info" />
         </receiver>
 
-        <activity android:name=".AboutActivity"
+        <activity android:name=".ui.AboutActivity"
             android:parentActivityName=".ui.HomeActivity"></activity>
     </application>
 
