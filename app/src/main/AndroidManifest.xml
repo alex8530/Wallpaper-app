@@ -42,13 +42,16 @@
             android:name=".ui.ViewWallPaperActivity"
             android:label="@string/title_activity_view_wall_paper"
             android:parentActivityName=".ui.ListWallPaperActivity"
-            android:theme="@style/MyFullScreenTheme" />
+
+            android:theme="@style/myThemeFullScreenOrDialg" />
         <activity android:name=".ui.AuthUiActivity" />
         <activity android:name=".ui.UploadPhotoActivity" />
         <activity
             android:name=".ui.ListUserImagesActivity"
             android:theme="@style/MyFullScreenTheme" />
-        <activity android:name=".ui.ViewUserImageActivity" />
+        <activity android:name=".ui.ViewUserImageActivity"
+
+            android:theme="@style/myThemeFullScreenOrDialg"/>
         <activity android:name=".ui.NoInternetActivity" />
 
         <receiver android:name=".widget.IconAppWidgetProvider">

@@ -14,4 +14,8 @@
     </style>
 
 
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Dialog">    </style>
+
+
 </resources>

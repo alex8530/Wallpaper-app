@@ -28,6 +28,7 @@
 
 
 
+
     <!--this is for full screen ***************************************  -->
     <style name="MyFullScreenTheme" parent="AppTheme">
         <item name="actionBarStyle">@style/FullScreenActionbarStyle</item>
@@ -83,4 +84,15 @@
     </style>
 
 
+
+
+    <!--this is for two screen -->
+    <style name="myThemeFullScreenOrDialg" parent="BaseTheme">
+
+    </style>
+
+
+    <style name="BaseTheme" parent="MyFullScreenTheme">
+
+    </style>
 </resources>

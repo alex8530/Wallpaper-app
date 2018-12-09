@@ -8,7 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.ViewUserImageActivity">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title=""
+         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
     <ImageView
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/user_image_background"
