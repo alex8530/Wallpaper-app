@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,11 +39,12 @@ import butterknife.ButterKnife;
  */
 public class CategoryFragment extends Fragment {
     private static final String TAG = "CategoryFragment";
+    private static final String SCROLL_POSITION_KEY ="key" ;
 
 
     FirebaseDatabase database;
     DatabaseReference categoriesBakeground;
-
+     int positin;
 
     //firebaseUi adapter
     FirebaseRecyclerOptions<Category> options;
@@ -192,6 +194,27 @@ public class CategoryFragment extends Fragment {
             adapter.startListening();
         }
 
+
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        positin = ((GridLayoutManager) (recyclerViewCategory.getLayoutManager())).findLastCompletelyVisibleItemPosition();
+        outState.putInt(SCROLL_POSITION_KEY, positin);
+
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle state) {
+        super.onViewStateRestored(state);
+        if (state != null) {
+            positin = state.getInt(SCROLL_POSITION_KEY, 0);
+            recyclerViewCategory.scrollToPosition(positin);
+
+        }
 
     }
 }

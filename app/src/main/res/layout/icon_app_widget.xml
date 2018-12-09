@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     android:id="@+id/widget_img"
     android:scaleType="centerCrop"
-    android:src="@drawable/sign_in_img_bk"/>
+    android:src="@drawable/icon_app"/>
 </RelativeLayout>

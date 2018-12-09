@@ -35,17 +35,14 @@ public class ListWallPaperActivity extends AppCompatActivity {
     private static final String TAG = "ListWallPaperActivity";
     private static final String SCROLL_POSITION_KEY = "SCROLL_POSITION_KEY";
     private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
-    public static int index = -1;
-    public static int top = -1;
+
     GridLayoutManager  mLayoutManager;
     Query query;
     FirebaseRecyclerAdapter<WallPaperItem,WallPaperViewHolder> adapter;
     FirebaseRecyclerOptions<WallPaperItem> options;
-    Parcelable mSavedRecyclerLayoutState;
-    int positin;
+     int positin;
     RecyclerView mRecyclerView;
-  int  lastFirstVisiblePosition;
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_wall_paper);
@@ -63,11 +60,6 @@ public class ListWallPaperActivity extends AppCompatActivity {
         int numberOfGridColumn=getResources().getInteger(R.integer.grid_number_column);
         mLayoutManager= new GridLayoutManager(this,numberOfGridColumn);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        if (adapter!=null){
-
-            adapter.startListening();
-
-        }
 
 
         loadBackgroundImage();
@@ -189,14 +181,14 @@ public class ListWallPaperActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        if (adapter!=null){
+
+            adapter.startListening();
+
+        }
 
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-
-    }
 
     @Override
     protected void onDestroy() {
@@ -206,14 +198,14 @@ public class ListWallPaperActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        if (adapter!=null){
-//            adapter.startListening();
-//        }
-//
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adapter!=null){
+            adapter.startListening();
+        }
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -232,25 +224,20 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
          positin = ((GridLayoutManager) (mRecyclerView.getLayoutManager())).findLastCompletelyVisibleItemPosition();
         outState.putInt(SCROLL_POSITION_KEY, positin);
-        Log.d(TAG, "onSaveInstanceStatePositin: " + positin);
-        Toast.makeText(this, "saa"+positin, Toast.LENGTH_SHORT).show();
-
 
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle state) {
         super.onRestoreInstanceState(state);
-//         Retrieve list state and list/item positions
-        if (state != null) {
+         if (state != null) {
             positin = state.getInt(SCROLL_POSITION_KEY, 0);
-            Toast.makeText(this, "reeees" + positin, Toast.LENGTH_SHORT).show();
-            mRecyclerView.scrollToPosition(positin);
+             mRecyclerView.scrollToPosition(positin);
 
         }
 
     }
-//
+
 
 
 }
