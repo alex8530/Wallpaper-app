@@ -1,0 +1,11 @@
+<resources>
+
+
+    <!--homeActivity-->
+
+    <dimen name="bar_hight">128dp</dimen>
+    <dimen name="keyline_2">80</dimen>
+
+
+
+</resources>

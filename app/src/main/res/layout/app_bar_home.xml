@@ -13,8 +13,9 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            android:contentInsetStart="@dimen/keyline_2"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="@dimen/bar_hight"
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolbarColorBackArrow"
             app:popupTheme="@style/AppTheme.PopupOverlay" />

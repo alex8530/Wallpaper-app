@@ -10,8 +10,13 @@
 Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
-    <dimen name="widget_margin">8dp</dimen>
 
+
+    <!--homeActivity-->
+
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="bar_hight">56dp</dimen>
+    <dimen name="keyline_2">72</dimen>
 
 
 </resources>
