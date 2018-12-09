@@ -1,121 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:id="@+id/rootRelativeLayout"
+    android:layout_height="match_parent"
     tools:context=".ui.ViewWallPaperActivity">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/viewpaperCoordinatorLayout"
+    <ImageView
+        android:id="@+id/viewwallpaper_image"
+         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Alex viewpaper"
+        android:scaleType="centerCrop" />
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+         app:titleTextAppearance="@style/Toolbar.TitleText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize" />
 
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbarViewpaper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/viewpaperCollapse"
-                android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:fitsSystemWindows="true"
-                app:contentScrim="@android:color/black"
-                app:expandedTitleTextAppearance="@android:color/transparent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                <ImageView
-                    android:id="@+id/viewwallpaper_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="Alex viewpaper"
-                    android:scaleType="centerCrop" />
-
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-            </android.support.design.widget.CollapsingToolbarLayout>
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="5dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:padding="10dp"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-
-        </android.support.v4.widget.NestedScrollView>
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/viewpaperFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:backgroundTint="@android:color/white"
-            android:src="@drawable/ic_terrain_black_24dp"
-            app:elevation="6dp"
-            app:layout_anchor="@id/appbarViewpaper"
-            app:layout_anchorGravity="bottom|end"
-            app:pressedTranslationZ="12dp" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/viewpaperFabDownload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:backgroundTint="@android:color/white"
-            android:src="@drawable/ic_file_download_black_24dp"
-            app:elevation="6dp"
-            app:layout_anchor="@id/appbarViewpaper"
-            app:layout_anchorGravity="bottom|start"
-            app:pressedTranslationZ="12dp" />
-
-    </android.support.design.widget.CoordinatorLayout>
 
     <com.github.clans.fab.FloatingActionMenu xmlns:fab="http://schemas.android.com/apk/res-auto"
 
-        android:id="@+id/menuViewFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentEnd="true"
+         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         fab:menu_animationDelayPerItem="50"
@@ -150,6 +64,7 @@
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
         fab:menu_shadowYOffset="3dp"
+        android:layout_above="@id/menuLeftViewFab"
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
@@ -171,6 +86,72 @@
 
             fab:fab_colorNormal="#fff"
             fab:fab_label="Share to Instagram"
+            fab:fab_size="mini" />
+
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+    <com.github.clans.fab.FloatingActionMenu xmlns:fab="http://schemas.android.com/apk/res-auto"
+         android:id="@+id/menuLeftViewFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_backgroundColor="@android:color/transparent"
+        fab:menu_buttonSpacing="0dp"
+        fab:menu_colorNormal="#000"
+        fab:menu_colorPressed="#E75043"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_fab_size="normal"
+        fab:menu_icon="@drawable/ic_settings_applications_black_24dp"
+        fab:menu_labels_colorNormal="#333333"
+        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorRipple="#66FFFFFF"
+        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_ellipsize="none"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        fab:menu_labels_margin="0dp"
+        fab:menu_labels_maxLines="-1"
+        fab:menu_labels_padding="8dp"
+        fab:menu_labels_paddingBottom="4dp"
+        fab:menu_labels_paddingLeft="8dp"
+        fab:menu_labels_paddingRight="8dp"
+        fab:menu_labels_paddingTop="4dp"
+        fab:menu_labels_position="right"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        fab:menu_labels_showShadow="true"
+        fab:menu_labels_singleLine="false"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_labels_textSize="14sp"
+        fab:menu_openDirection="up"
+        fab:menu_shadowColor="#66000000"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_showShadow="true">
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/viewpaperFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_terrain_black_24dp"
+            fab:fab_colorNormal="#fff"
+            fab:fab_label="Set As Background"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/viewpaperFabDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_file_download_black_24dp"
+            fab:fab_colorNormal="#fff"
+            fab:fab_label="Download"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

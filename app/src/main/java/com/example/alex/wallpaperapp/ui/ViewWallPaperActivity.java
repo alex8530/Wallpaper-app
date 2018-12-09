@@ -63,24 +63,23 @@ import dmax.dialog.SpotsDialog;
 
 
 public class ViewWallPaperActivity extends AppCompatActivity {
-    private static final String TAG = "ViewWallPaperActivity";
-    @BindView(R.id.viewpaperCollapse)
-    CollapsingToolbarLayout mCollapsingToolbarLayout;
+
+
+    RelativeLayout userRootRelativeLayout;
+
     @BindView(R.id.viewpaperFab)
-    FloatingActionButton mFab;
-    @BindView(R.id.viewwallpaper_image)
-    ImageView mImageViewBackground;
-    @BindView(R.id.viewpaperCoordinatorLayout)
-    CoordinatorLayout mCoordinatorLayout;
+    com.github.clans.fab.FloatingActionButton mFab;
+
 
     @BindView(R.id.viewpaperFabDownload)
-    FloatingActionButton mFabDownlaod;
+    com.github.clans.fab.FloatingActionButton mFabDownlaod;
 
 
 
+    @BindView(R.id.viewwallpaper_image)
+    ImageView mImageViewBackground;
 
-    @BindView(R.id.menuViewFab)
-    com.github.clans.fab.FloatingActionMenu floatingActionMenu;
+
 
     @BindView(R.id.fabFacebook)
     com.github.clans.fab.FloatingActionButton fabFacebook;
@@ -102,9 +101,11 @@ public class ViewWallPaperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wall_paper);
         ButterKnife.bind(this);
-
+        userRootRelativeLayout =findViewById(R.id.rootRelativeLayout);
 
         Toolbar toolbar =   findViewById(R.id.toolbar);
+
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
 
@@ -120,10 +121,6 @@ public class ViewWallPaperActivity extends AppCompatActivity {
         shareDialog= new ShareDialog(this);
 
 
-        //init
-        mCollapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsAppbar);
-         mCollapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
-        mCollapsingToolbarLayout.setTitle(Common.CATEGORY_SELECTED);
         Picasso.with(this).load(Common.wallPaperItem.getImageUrl()).into(mImageViewBackground);
 
 
@@ -324,7 +321,6 @@ public class ViewWallPaperActivity extends AppCompatActivity {
 
 
                     AppDatabase.getInstance(getApplicationContext()).recentItemDao().insertRecent(recent);
-                    Log.d(TAG, "run: insert!!!!!!!!");
 
                 }
             });
@@ -451,7 +447,7 @@ public class ViewWallPaperActivity extends AppCompatActivity {
             WallpaperManager manager = WallpaperManager.getInstance(getApplicationContext());
             try {
                 manager.setBitmap(bitmap);
-                Snackbar.make(mCoordinatorLayout,"WallPaper was Successfully Set !!",Snackbar.LENGTH_LONG).show();
+                Snackbar.make(userRootRelativeLayout,"WallPaper was Successfully Set !!",Snackbar.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

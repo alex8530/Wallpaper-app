@@ -9,27 +9,26 @@
     tools:context=".ui.ViewUserImageActivity">
 
 
+    <ImageView
+         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/user_image_background"
+        android:scaleType="centerCrop"/>
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:title=""
-         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-    <ImageView
-        android:layout_below="@id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/user_image_background"
-        android:scaleType="centerCrop"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <com.github.clans.fab.FloatingActionMenu xmlns:fab="http://schemas.android.com/apk/res-auto"
 
         android:id="@+id/menuViewFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
