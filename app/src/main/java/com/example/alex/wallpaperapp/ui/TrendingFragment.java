@@ -38,11 +38,11 @@ public class TrendingFragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference wallpaperBakeground;
 
-
+    LinearLayoutManager layoutManager;
     //firebaseUi adapter
     FirebaseRecyclerOptions<WallPaperItem> options;
     FirebaseRecyclerAdapter<WallPaperItem,WallPaperViewHolder> adapter;
-
+    int numberOfItem;
 
     @BindView(R.id.fragment_trending_rv)
     RecyclerView recyclerViewTrending;
@@ -125,6 +125,7 @@ public class TrendingFragment extends Fragment {
                 return new WallPaperViewHolder(view);
             }
         };
+          numberOfItem = adapter.getItemCount();
 
 
     }
@@ -147,7 +148,7 @@ public class TrendingFragment extends Fragment {
 
 
         recyclerViewTrending.setHasFixedSize(true);
-        LinearLayoutManager layoutManager= new LinearLayoutManager(getActivity());
+          layoutManager= new LinearLayoutManager(getActivity());
         //we need to reverse the order because is order assending and we want the first one be large!!
         layoutManager.setReverseLayout(true);
 
@@ -156,6 +157,21 @@ public class TrendingFragment extends Fragment {
 
         adapter.startListening();
         recyclerViewTrending.setAdapter(adapter);
+
+
+
+
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                //I need the first position so 0 , but because i revese it .. it will be the last element for example 1000
+                //the item on the top is the last element ,
+
+           recyclerViewTrending.scrollToPosition(adapter.getItemCount()-1);//-1 is very impoetant !!!!!
+
+            }
+        });
         return view;
     }
 
@@ -164,8 +180,7 @@ public class TrendingFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (adapter!=null){
-            Log.d(TAG, "onStart: ");
-            adapter.startListening();
+             adapter.startListening();
         }
     }
 

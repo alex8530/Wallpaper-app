@@ -68,17 +68,10 @@ public class ListWallPaperActivity extends AppCompatActivity {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
                 super.onItemRangeInserted(positionStart, itemCount);
-                int friendlyMessageCount = adapter.getItemCount();
-                int lastVisiblePosition = mLayoutManager.findLastCompletelyVisibleItemPosition();
 
-                // If the recycler view is initially being loaded or the user is at the bottom of the list, scroll
-                // to the bottom of the list to show the newly added message.
-                if (lastVisiblePosition == -1 ||
-                        (positionStart >= (friendlyMessageCount - 1) && lastVisiblePosition == (positionStart - 1))) {
-//                    mRecyclerView.scrollToPosition(positionStart);
                     mRecyclerView.scrollToPosition(positin);
 
-                }
+
             }
         });
 

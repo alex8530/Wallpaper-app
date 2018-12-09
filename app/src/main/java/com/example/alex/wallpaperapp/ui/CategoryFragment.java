@@ -164,6 +164,17 @@ public class CategoryFragment extends Fragment {
         adapter.startListening();
         recyclerViewCategory.setAdapter(adapter);
 
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+
+                recyclerViewCategory.scrollToPosition(positin);
+
+
+            }
+        });
+
 
 
         return view;
@@ -204,7 +215,7 @@ public class CategoryFragment extends Fragment {
 
         positin = ((GridLayoutManager) (recyclerViewCategory.getLayoutManager())).findLastCompletelyVisibleItemPosition();
         outState.putInt(SCROLL_POSITION_KEY, positin);
-        
+
 
     }
 
