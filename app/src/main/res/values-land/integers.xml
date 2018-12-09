@@ -3,5 +3,5 @@
 
 
     <integer name="grid_number_column">2</integer>
-    <integer name="grid_number_column_fragments">1</integer>
+
 </resources>
