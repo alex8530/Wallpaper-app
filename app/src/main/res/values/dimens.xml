@@ -18,6 +18,19 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="bar_hight">56dp</dimen>
     <dimen name="keyline_2">72dp</dimen>
     <dimen name="tab_bar_hight">60dp</dimen>
+    <!--!!-->
 
+    <!---->
+    <dimen name="activity_about_car__elevation">5dp</dimen>
+    <dimen name="activity_about_card_content_padding">10dp</dimen>
+    <dimen name="activity_about_information_size">18sp</dimen>
+    <dimen name="activity_about_padding_information">10dp</dimen>
+    <dimen name="activity_upload_margin">12dp</dimen>
+    <dimen name="activity_upload_zero_hight">0dp</dimen>
+    <dimen name="activity_view_user_margin_10">10dp</dimen>
+    <dimen name="activity_view_user_image_pading_4">4dp</dimen>
+    <dimen name="category_item_hight">300dp</dimen>
+    <dimen name="category_item_text_size">20sp</dimen>
+<!---->
 
 </resources>

@@ -4,22 +4,22 @@
     tools:showIn="navigation_view">
 
 
-    <item android:title="Managment">
+    <item android:title="@string/drawer_title">
         <menu>
             <item
                 android:id="@+id/nav_images"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="Your Images" />
+                android:title="@string/drawer_image" />
 
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_announcement_black_24dp"
-                android:title="About App" />
+                android:title="@string/drawer_about" />
 
             <item
                 android:id="@+id/nav_sign_out"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"
-                android:title="Sign Out" />
+                android:title="@string/drawer_sign_out" />
 
         </menu>
     </item>

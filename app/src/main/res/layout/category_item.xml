@@ -16,18 +16,19 @@
         <ImageView
             android:id="@+id/category_item_image"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/category_item_hight"
             android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/category_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="#4f0e0d0e"
+             android:background="#4f0e0d0e"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/category_item_text_size"
+            android:layout_alignBottom="@id/category_item_image"
+            android:layout_marginBottom="@dimen/activity_view_user_margin_10"
             tools:text="Name of Movie" />
 
     </RelativeLayout>

@@ -11,13 +11,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:weightSum="2"
-        android:layout_margin="12dp"
+        android:layout_margin="@dimen/activity_upload_margin"
         android:orientation="vertical"
         android:layout_height="match_parent">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/activity_upload_zero_hight"
             android:layout_weight="1"
             android:id="@+id/uplad_image"
             android:src="@drawable/ic_terrain_black_24dp"/>
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="0dp"
+            android:layout_width="@dimen/activity_upload_zero_hight"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Choose.."
@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Upload"
+            android:text="@string/upload"
             android:enabled="false"
             style="@style/Widget.AppCompat.Button.Colored"
             android:id="@+id/upload_btn"/>

@@ -9,8 +9,7 @@
     <string name="action_aboutMe">About Me</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_view_wall_paper">ViewWallPaperActivity</string>
+     <string name="title_activity_view_wall_paper">. </string>
 
     <string name="facebook_id">2146744878922212</string>
     <string name="facebook_login_protocol_achema">fb2146744878922212</string>
@@ -26,8 +25,20 @@
     <string name="add_widget">Add widget</string>
 
 
-
+<!---->
     <string name="titleExpandAbout">Ali Abu Harb </string>
     <string name="upload">Upload</string>
-
+    <string name="activity_about_information">You can communicate with me through these social networking platforms</string>
+    <string name="activity_about_just_click_on_icon">Just Click on Icon</string>
+     <string name="activity_view_user_delete_item">Delete</string>
+    <string name="activity_view_user_delete_set_background">Set As Background</string>
+    <string name="activity_view_wall_paper_share_facebook">Share to Facebook</string>
+    <string name="activity_view_wall_paper_share_instagrm">Share to Instagram</string>
+    <string name="activity_view_wall_paper_daownload">Download</string>
+    <string name="user_email">User Email</string>
+    <string name="drawer_image">Your Images</string>
+    <string name="drawer_about">About App</string>
+    <string name="drawer_sign_out">Sign Out</string>
+    <string name="drawer_title">Managment</string>
+<!---->
 </resources>

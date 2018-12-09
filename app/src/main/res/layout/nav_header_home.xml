@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:id="@+id/nav_email"
-        android:text="User Email"
+        android:text="@string/user_email"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

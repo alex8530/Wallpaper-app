@@ -33,8 +33,7 @@
                     android:id="@+id/aboutImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="Alex viewpaper"
-                    android:scaleType="centerCrop"
+                     android:scaleType="centerCrop"
                     android:src="@drawable/myphoto" />
 
 
@@ -58,10 +57,9 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="5dp"
+                 app:cardElevation="@dimen/activity_about_car__elevation"
                 app:cardUseCompatPadding="true"
-                app:contentPadding="10dp">
+                app:contentPadding="@dimen/activity_about_card_content_padding">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,32 +69,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:padding="10dp"
-                        android:text="You can communicate with me through these social networking platforms"
+                        android:layout_marginTop="@dimen/cardview_default_elevation"
+                        android:padding="@dimen/activity_about_padding_information"
+                        android:text="@string/activity_about_information"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/activity_about_information_size" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_margin="@dimen/activity_about_padding_information"
                         android:gravity="center"
-                        android:padding="5dp">
+                        android:padding="@dimen/activity_about_car__elevation">
 
                         <ImageView
                             android:id="@+id/imgFacebook"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="@dimen/activity_about_car__elevation"
                             android:src="@drawable/ic_facebook" />
 
                         <ImageView
                             android:id="@+id/imgTweeter"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="@dimen/activity_about_car__elevation"
                             android:src="@drawable/ic_twitter" />
 
                         <ImageView
@@ -104,14 +102,14 @@
                             android:id="@+id/imgGithup"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="@dimen/activity_about_car__elevation"
                             android:src="@drawable/ic_github" />
 
                         <ImageView
                             android:id="@+id/imgLinkedin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="@dimen/activity_about_car__elevation"
                             android:src="@drawable/ic_linkedin" />
 
                     </LinearLayout>
@@ -120,7 +118,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Just Click on Icon " />
+                        android:text="@string/activity_about_just_click_on_icon" />
 
                 </LinearLayout>
 

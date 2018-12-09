@@ -199,11 +199,12 @@ public class CategoryFragment extends Fragment {
 
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         positin = ((GridLayoutManager) (recyclerViewCategory.getLayoutManager())).findLastCompletelyVisibleItemPosition();
         outState.putInt(SCROLL_POSITION_KEY, positin);
+        
 
     }
 

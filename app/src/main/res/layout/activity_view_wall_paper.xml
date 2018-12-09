@@ -12,8 +12,7 @@
         android:id="@+id/viewwallpaper_image"
          android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="Alex viewpaper"
-        android:scaleType="centerCrop" />
+         android:scaleType="centerCrop" />
 
 
     <android.support.v7.widget.Toolbar
@@ -29,9 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+         android:layout_marginLeft="@dimen/activity_view_user_margin_10"
+        android:layout_marginRight="@dimen/activity_view_user_margin_10"
+        android:layout_marginBottom="@dimen/activity_view_user_margin_10"
         fab:menu_animationDelayPerItem="50"
         fab:menu_backgroundColor="@android:color/transparent"
         fab:menu_buttonSpacing="0dp"
@@ -43,16 +42,16 @@
         fab:menu_labels_colorNormal="#333333"
         fab:menu_labels_colorPressed="#444444"
         fab:menu_labels_colorRipple="#66FFFFFF"
-        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_cornerRadius="@dimen/activity_view_user_image_pading_4"
         fab:menu_labels_ellipsize="none"
         fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_margin="0dp"
+        fab:menu_labels_margin="@dimen/activity_upload_zero_hight"
         fab:menu_labels_maxLines="-1"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_paddingBottom="4dp"
-        fab:menu_labels_paddingLeft="8dp"
-        fab:menu_labels_paddingRight="8dp"
-        fab:menu_labels_paddingTop="4dp"
+        fab:menu_labels_padding="@dimen/activity_view_user_margin_10"
+        fab:menu_labels_paddingBottom="@dimen/activity_view_user_image_pading_4"
+        fab:menu_labels_paddingLeft="@dimen/activity_view_user_margin_10"
+        fab:menu_labels_paddingRight="@dimen/activity_view_user_margin_10"
+        fab:menu_labels_paddingTop="@dimen/activity_view_user_image_pading_4"
         fab:menu_labels_position="left"
         fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
         fab:menu_labels_showShadow="true"
@@ -61,9 +60,9 @@
         fab:menu_labels_textSize="14sp"
         fab:menu_openDirection="up"
         fab:menu_shadowColor="#66000000"
-        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowRadius="@dimen/activity_view_user_image_pading_4"
         fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="3dp"
+        fab:menu_shadowYOffset="@dimen/activity_view_user_image_pading_4"
         android:layout_above="@id/menuLeftViewFab"
         fab:menu_showShadow="true">
 
@@ -71,10 +70,9 @@
             android:id="@+id/fabFacebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:src="@drawable/com_facebook_button_icon_blue"
             fab:fab_colorNormal="#fff"
-            fab:fab_label="Share to Facebook"
+            fab:fab_label="@string/activity_view_wall_paper_share_facebook"
 
             fab:fab_size="mini" />
 
@@ -85,7 +83,7 @@
             android:src="@drawable/ic_instagram"
 
             fab:fab_colorNormal="#fff"
-            fab:fab_label="Share to Instagram"
+            fab:fab_label="@string/activity_view_wall_paper_share_instagrm"
             fab:fab_size="mini" />
 
 
@@ -98,12 +96,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/activity_view_user_margin_10"
+        android:layout_marginRight="@dimen/activity_view_user_margin_10"
+        android:layout_marginBottom="@dimen/activity_view_user_margin_10"
         fab:menu_animationDelayPerItem="50"
         fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_buttonSpacing="0dp"
+        fab:menu_buttonSpacing="@dimen/activity_upload_zero_hight"
         fab:menu_colorNormal="#000"
         fab:menu_colorPressed="#E75043"
         fab:menu_colorRipple="#99FFFFFF"
@@ -112,15 +110,15 @@
         fab:menu_labels_colorNormal="#333333"
         fab:menu_labels_colorPressed="#444444"
         fab:menu_labels_colorRipple="#66FFFFFF"
-        fab:menu_labels_cornerRadius="3dp"
+        fab:menu_labels_cornerRadius="@dimen/activity_view_user_image_pading_4"
         fab:menu_labels_ellipsize="none"
         fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_margin="0dp"
+        fab:menu_labels_margin="@dimen/activity_upload_zero_hight"
         fab:menu_labels_maxLines="-1"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_paddingBottom="4dp"
-        fab:menu_labels_paddingLeft="8dp"
-        fab:menu_labels_paddingRight="8dp"
+        fab:menu_labels_padding="@dimen/activity_view_user_margin_10"
+        fab:menu_labels_paddingBottom="@dimen/activity_view_user_image_pading_4"
+        fab:menu_labels_paddingLeft="@dimen/activity_view_user_margin_10"
+        fab:menu_labels_paddingRight="@dimen/activity_view_user_margin_10"
         fab:menu_labels_paddingTop="4dp"
         fab:menu_labels_position="right"
         fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
@@ -130,9 +128,9 @@
         fab:menu_labels_textSize="14sp"
         fab:menu_openDirection="up"
         fab:menu_shadowColor="#66000000"
-        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowRadius="@dimen/activity_view_user_image_pading_4"
         fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="3dp"
+        fab:menu_shadowYOffset="@dimen/activity_view_user_image_pading_4"
         fab:menu_showShadow="true">
 
 
@@ -142,7 +140,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_terrain_black_24dp"
             fab:fab_colorNormal="#fff"
-            fab:fab_label="Set As Background"
+            fab:fab_label="@string/activity_view_user_delete_set_background"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -151,7 +149,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_file_download_black_24dp"
             fab:fab_colorNormal="#fff"
-            fab:fab_label="Download"
+            fab:fab_label="@string/activity_view_wall_paper_daownload"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
