@@ -22,7 +22,10 @@
     <style name="ToolbarColorBackArrow" parent="AppTheme">
         <item name="android:textColorSecondary">@android:color/background_dark</item>
 
+
     </style>
+
+
 
 
     <!--this is for full screen ***************************************  -->
@@ -64,6 +67,19 @@
 
 
 
+    </style>
+
+
+
+    <!--this for change the size of text depend on screen-->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <!--this is for size of text tablayout-->
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">24sp</item>
     </style>
 
 

@@ -16,7 +16,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
 
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="bar_hight">56dp</dimen>
-    <dimen name="keyline_2">72</dimen>
+    <dimen name="keyline_2">72dp</dimen>
+    <dimen name="tab_bar_hight">60dp</dimen>
 
 
 </resources>

@@ -1,0 +1,17 @@
+<resources>
+
+
+    <!--this for change the size of text depend on screen-->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+
+
+    <!--this is for size of text tablayout-->
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+</resources>

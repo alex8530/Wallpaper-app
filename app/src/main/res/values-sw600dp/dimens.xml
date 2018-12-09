@@ -5,6 +5,7 @@
 
     <dimen name="bar_hight">128dp</dimen>
     <dimen name="keyline_2">80</dimen>
+    <dimen name="tab_bar_hight">100dp</dimen>
 
 
 

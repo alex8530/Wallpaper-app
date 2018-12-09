@@ -50,7 +50,8 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
         mRecyclerView= findViewById(R.id.wallpaperRecyleView);
         mRecyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(this,2);
+        int numberOfGridColumn=getResources().getInteger(R.integer.grid_number_column);
+        GridLayoutManager gridLayoutManager= new GridLayoutManager(this,numberOfGridColumn);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
         loadBackgroundImage();
