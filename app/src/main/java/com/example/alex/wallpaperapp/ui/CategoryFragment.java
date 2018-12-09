@@ -156,8 +156,8 @@ public class CategoryFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_category, container, false);
          ButterKnife.bind(this,view);
         recyclerViewCategory.setHasFixedSize(true);
-        int numberOfGridColumn=getResources().getInteger(R.integer.grid_number_column);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),numberOfGridColumn);
+        int numberOfColumn=getResources().getInteger(R.integer.grid_number_column);
+        GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),numberOfColumn);
         recyclerViewCategory.setLayoutManager(gridLayoutManager);
         adapter.startListening();
         recyclerViewCategory.setAdapter(adapter);

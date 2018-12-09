@@ -1,7 +1,9 @@
 package com.example.alex.wallpaperapp.ui;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.Toast;
 
 import com.example.alex.wallpaperapp.R;
 import com.example.alex.wallpaperapp.interfaces.MyItemClickListener;
@@ -28,13 +33,18 @@ import com.squareup.picasso.Picasso;
 
 public class ListWallPaperActivity extends AppCompatActivity {
     private static final String TAG = "ListWallPaperActivity";
+    private static final String SCROLL_POSITION_KEY = "SCROLL_POSITION_KEY";
+    private static final String BUNDLE_RECYCLER_LAYOUT = "classname.recycler.layout";
+    public static int index = -1;
+    public static int top = -1;
+    GridLayoutManager  mLayoutManager;
     Query query;
     FirebaseRecyclerAdapter<WallPaperItem,WallPaperViewHolder> adapter;
     FirebaseRecyclerOptions<WallPaperItem> options;
-
-
+    Parcelable mSavedRecyclerLayoutState;
+    int positin;
     RecyclerView mRecyclerView;
-
+  int  lastFirstVisiblePosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +61,34 @@ public class ListWallPaperActivity extends AppCompatActivity {
         mRecyclerView= findViewById(R.id.wallpaperRecyleView);
         mRecyclerView.setHasFixedSize(true);
         int numberOfGridColumn=getResources().getInteger(R.integer.grid_number_column);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(this,numberOfGridColumn);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mLayoutManager= new GridLayoutManager(this,numberOfGridColumn);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        if (adapter!=null){
+
+            adapter.startListening();
+
+        }
+
 
         loadBackgroundImage();
 
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                int friendlyMessageCount = adapter.getItemCount();
+                int lastVisiblePosition = mLayoutManager.findLastCompletelyVisibleItemPosition();
+
+                // If the recycler view is initially being loaded or the user is at the bottom of the list, scroll
+                // to the bottom of the list to show the newly added message.
+                if (lastVisiblePosition == -1 ||
+                        (positionStart >= (friendlyMessageCount - 1) && lastVisiblePosition == (positionStart - 1))) {
+//                    mRecyclerView.scrollToPosition(positionStart);
+                    mRecyclerView.scrollToPosition(positin);
+
+                }
+            }
+        });
 
     }
 
@@ -147,32 +180,40 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
         adapter.startListening();
         mRecyclerView.setAdapter(adapter);
+
+
+
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
-        if (adapter!=null){
 
-            adapter.startListening();
-        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         if (adapter!=null){
             adapter.stopListening();
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (adapter!=null){
-            adapter.startListening();
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (adapter!=null){
+//            adapter.startListening();
+//        }
+//
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -184,4 +225,32 @@ public class ListWallPaperActivity extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
     }
+//
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+         positin = ((GridLayoutManager) (mRecyclerView.getLayoutManager())).findLastCompletelyVisibleItemPosition();
+        outState.putInt(SCROLL_POSITION_KEY, positin);
+        Log.d(TAG, "onSaveInstanceStatePositin: " + positin);
+        Toast.makeText(this, "saa"+positin, Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle state) {
+        super.onRestoreInstanceState(state);
+//         Retrieve list state and list/item positions
+        if (state != null) {
+            positin = state.getInt(SCROLL_POSITION_KEY, 0);
+            Toast.makeText(this, "reeees" + positin, Toast.LENGTH_SHORT).show();
+            mRecyclerView.scrollToPosition(positin);
+
+        }
+
+    }
+//
+
+
 }

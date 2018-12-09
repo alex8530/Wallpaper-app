@@ -42,7 +42,6 @@
             android:name=".ui.ViewWallPaperActivity"
             android:label="@string/title_activity_view_wall_paper"
             android:parentActivityName=".ui.ListWallPaperActivity"
-
             android:theme="@style/myThemeFullScreenOrDialg" />
         <activity android:name=".ui.AuthUiActivity" />
         <activity android:name=".ui.UploadPhotoActivity" />
@@ -52,7 +51,7 @@
         <activity android:name=".ui.ViewUserImageActivity"
 
             android:theme="@style/myThemeFullScreenOrDialg"/>
-        <activity android:name=".ui.NoInternetActivity" />
+        <activity android:name=".ui.NoInternetActivity"/>
 
         <receiver android:name=".widget.IconAppWidgetProvider">
             <intent-filter>
@@ -65,6 +64,8 @@
         </receiver>
 
         <activity android:name=".ui.AboutActivity"
+
+            android:theme="@style/myThemeFullScreenOrDialg"
             android:parentActivityName=".ui.HomeActivity"></activity>
     </application>
 

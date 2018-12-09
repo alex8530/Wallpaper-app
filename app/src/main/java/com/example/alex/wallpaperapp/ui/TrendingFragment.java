@@ -152,6 +152,8 @@ public class TrendingFragment extends Fragment {
         layoutManager.setReverseLayout(true);
 
         recyclerViewTrending.setLayoutManager(layoutManager);
+
+
         adapter.startListening();
         recyclerViewTrending.setAdapter(adapter);
         return view;
