@@ -19,9 +19,7 @@
         <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/tab_bar_hight"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
-            app:tabTextAppearance="@style/MineCustomTabText"
-            android:id="@+id/tabLayout">
+             android:id="@+id/tabLayout">
 
         </android.support.design.widget.TabLayout>
 
@@ -29,7 +27,6 @@
             android:layout_below="@id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_above="@+id/bottomNavigation"
             android:id="@+id/viewpager">
 
