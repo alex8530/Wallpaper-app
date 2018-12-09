@@ -180,6 +180,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
                final ProgressDialog  progressDialog= new ProgressDialog(this);
                progressDialog.setTitle("Uploading..");
                progressDialog.show();
+               progressDialog.setCancelable(false);
                String pathImage="images/" + UUID.randomUUID().toString();
 
                StorageReference  reference= storageReference.child(pathImage);
