@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/MyFullScreenTheme">
         <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/icon_app" />
+        <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_id"
             tools:replace="android:value" />

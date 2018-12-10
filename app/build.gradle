@@ -43,6 +43,10 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$FIREBASE_NUMBER"
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
+    implementation  "com.google.firebase:firebase-messaging:$FIREBASE_NUMBER"
+
+
+
 
     implementation "com.android.support:cardview-v7:$APP_VERSION"
     implementation "com.android.support:recyclerview-v7:$APP_VERSION"

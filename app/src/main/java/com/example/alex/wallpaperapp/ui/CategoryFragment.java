@@ -54,7 +54,7 @@ public class CategoryFragment extends Fragment {
     @BindView(R.id.fragment_category_rv)
     RecyclerView recyclerViewCategory;
 
-
+    GridLayoutManager gridLayoutManager;
 
     public CategoryFragment() {
 
@@ -89,7 +89,7 @@ public class CategoryFragment extends Fragment {
                             public void onError() {
 
                                 //try again online if the first time faild to lod from cash !!
-                                Picasso.with(getActivity()).load(model.getImageLink())
+                                Picasso.with(getActivity()).load(model.getImageLink()).placeholder(R.drawable.ic_terrain_black_24dp)
                                         .error(R.drawable.ic_terrain_black_24dp)
                                         .into(holder.imgbackground, new Callback() {
                                             @Override
@@ -159,7 +159,7 @@ public class CategoryFragment extends Fragment {
          ButterKnife.bind(this,view);
         recyclerViewCategory.setHasFixedSize(true);
         int numberOfColumn=getResources().getInteger(R.integer.grid_number_column);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),numberOfColumn);
+          gridLayoutManager= new GridLayoutManager(getActivity(),numberOfColumn);
         recyclerViewCategory.setLayoutManager(gridLayoutManager);
         adapter.startListening();
         recyclerViewCategory.setAdapter(adapter);
@@ -213,9 +213,12 @@ public class CategoryFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        positin = ((GridLayoutManager) (recyclerViewCategory.getLayoutManager())).findLastCompletelyVisibleItemPosition();
-        outState.putInt(SCROLL_POSITION_KEY, positin);
+        if (gridLayoutManager!=null){
 
+            positin = gridLayoutManager.findLastCompletelyVisibleItemPosition();
+            outState.putInt(SCROLL_POSITION_KEY, positin);
+
+        }
 
     }
 
