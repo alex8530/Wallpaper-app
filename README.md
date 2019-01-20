@@ -1,5 +1,5 @@
 # Wallpaper-app
-wallpaper is an android app that show images , download them,and you can upload your images to share it with the word !!
+Wallpaper is an android app that show images , download them,and you can upload your images to share it with the word !!
 
 An application will be written solely in the Java Programming Language.This App Displays the pictures and you choose the appropriate picture and put it as a wallpaper for your mobile,The App can detect  most popular images that people have seen, it can download photos to your device,and also the application enables you to upload it and store images in it,delete your photos ,and  share it on Facebook and Instagram.
 Intended User
