@@ -15,6 +15,7 @@ import com.wallpaper.alex.wallpaperapp.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.wallpaper.alex.wallpaperapp.utils.Common;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,13 +47,13 @@ public class AboutActivity extends AppCompatActivity {
 
 
 
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, Common.PANNER_1);
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
 
-        Toolbar toolbar =   findViewById(R.id.toolbar);
+        Toolbar toolbar =findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -66,7 +67,7 @@ public class AboutActivity extends AppCompatActivity {
         //init
         mCollapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.CollapsAppbar);
         mCollapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppbar);
-      mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.titleExpandAbout));
+         mCollapsingToolbarLayout.setTitle(getResources().getString(R.string.titleExpandAbout));
 
 
 

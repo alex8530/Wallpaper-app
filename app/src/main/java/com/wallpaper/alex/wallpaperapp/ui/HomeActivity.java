@@ -30,6 +30,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.wallpaper.alex.wallpaperapp.R;
 import com.wallpaper.alex.wallpaperapp.adapter.MyFragmentAdapter;
 import com.wallpaper.alex.wallpaperapp.utils.Common;
@@ -44,6 +48,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +70,8 @@ public class HomeActivity extends AppCompatActivity
     @BindView(R.id.bottomNavigation)
     BottomNavigationView bottomNavigation;
 
+
+    private InterstitialAd mInterstitialAd;
 
 
     public static final String IDP_RESPONSE = "extra_idp_response";
@@ -104,16 +111,11 @@ public class HomeActivity extends AppCompatActivity
             Toast.makeText(this, "please check your conniection ", Toast.LENGTH_SHORT).show();
         }
 
-
         setUpToolBar();
         setUpActionBarDrawerToggle();
-
         setUpTapLayout();
-
-
-
-
         loadUserInfo();
+         setUpAd();
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -121,19 +123,45 @@ public class HomeActivity extends AppCompatActivity
 
 
                 if (item.getItemId()==R.id.action_upload){
+                    showInterstitialAdd();
+//                    startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+                    //add listoner after close the add
+                    mInterstitialAd.setAdListener(new AdListener(){
+                        @Override
+                        public void onAdClosed() {
+                            startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+                            //this is for second show after the first one show
+                            mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
-                    startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+
+                        }
+                    });
                     return true;
 
                 }
                 return false;
             }
         });
+    }
+
+    private void setUpAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-4680912109247750/9328209467");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
     }
 
-
+    public void showInterstitialAdd(){
+        //show ad
+        boolean a = mInterstitialAd.isLoaded();
+        if (a) {
+            mInterstitialAd.show();
+            Toast.makeText(this, "show", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show();
+         }
+    }
 
     private void setUpToolBar() {
 
@@ -141,6 +169,7 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
     }
+
 
     private void setUpTapLayout() {
           adapter= new MyFragmentAdapter(getSupportFragmentManager(),this);
@@ -194,6 +223,8 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);

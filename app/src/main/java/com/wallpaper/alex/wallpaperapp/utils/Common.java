@@ -31,6 +31,11 @@ public final class Common  {
 
 
 
+    public static final String PANNER_1 ="ca-app-pub-4680912109247750/2271846524";
+
+
+
+
 
 
 

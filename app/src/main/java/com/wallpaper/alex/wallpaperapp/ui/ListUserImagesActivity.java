@@ -52,7 +52,7 @@ public class ListUserImagesActivity extends AppCompatActivity {
          loadUserImages();
 
 
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, Common.PANNER_1);
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
