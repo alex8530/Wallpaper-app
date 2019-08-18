@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.alex.wallpaperapp">
+    package="com.wallpaper.alex.wallpaperapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
@@ -27,7 +27,7 @@
             android:authorities="com.facebook.app.FacebookContentProvider2146744878922212"
             android:exported="true" />
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name="com.wallpaper.alex.wallpaperapp.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,28 +35,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.HomeActivity"
+            android:name="com.wallpaper.alex.wallpaperapp.ui.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/MyFullScreenTheme" />
         <activity
-            android:name=".ui.ListWallPaperActivity"
+            android:name="com.wallpaper.alex.wallpaperapp.ui.ListWallPaperActivity"
             android:theme="@style/MyFullScreenTheme" />
         <activity
-            android:name=".ui.ViewWallPaperActivity"
+            android:name="com.wallpaper.alex.wallpaperapp.ui.ViewWallPaperActivity"
             android:label="@string/title_activity_view_wall_paper"
-            android:parentActivityName=".ui.ListWallPaperActivity"
+            android:parentActivityName="com.wallpaper.alex.wallpaperapp.ui.ListWallPaperActivity"
             android:theme="@style/myThemeFullScreenOrDialg" />
-        <activity android:name=".ui.AuthUiActivity" />
-        <activity android:name=".ui.UploadPhotoActivity" />
+        <activity android:name="com.wallpaper.alex.wallpaperapp.ui.AuthUiActivity" />
+        <activity android:name="com.wallpaper.alex.wallpaperapp.ui.UploadPhotoActivity" />
         <activity
-            android:name=".ui.ListUserImagesActivity"
+            android:name="com.wallpaper.alex.wallpaperapp.ui.ListUserImagesActivity"
             android:theme="@style/MyFullScreenTheme" />
-        <activity android:name=".ui.ViewUserImageActivity"
+        <activity android:name="com.wallpaper.alex.wallpaperapp.ui.ViewUserImageActivity"
 
             android:theme="@style/myThemeFullScreenOrDialg"/>
-        <activity android:name=".ui.NoInternetActivity"/>
+        <activity android:name="com.wallpaper.alex.wallpaperapp.ui.NoInternetActivity"/>
 
-        <receiver android:name=".widget.IconAppWidgetProvider">
+        <receiver android:name="com.wallpaper.alex.wallpaperapp.widget.IconAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -67,10 +67,16 @@
         </receiver>
 
         <activity
-            android:name=".ui.AboutActivity"
+            android:name="com.wallpaper.alex.wallpaperapp.ui.AboutActivity"
 
             android:theme="@style/myThemeFullScreenOrDialg"
-            android:parentActivityName=".ui.HomeActivity" />
+            android:parentActivityName="com.wallpaper.alex.wallpaperapp.ui.HomeActivity" />
+
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>

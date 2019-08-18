@@ -5,7 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.alex.wallpaperapp"
+        applicationId "com.wallpaper.alex.wallpaperapp"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -19,6 +19,8 @@ android {
         }
     }
 }
+
+
 
 dependencies {
     def BUTTER_KNIFE_VERSION = "8.5.1"
@@ -44,7 +46,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
     implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     implementation  "com.google.firebase:firebase-messaging:$FIREBASE_NUMBER"
-
+    implementation "com.google.firebase:firebase-ads:$FIREBASE_NUMBER"
 
 
 

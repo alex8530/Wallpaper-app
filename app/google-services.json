@@ -1,52 +1,45 @@
 {
   "project_info": {
-    "project_number": "172250354216",
-    "firebase_url": "https://wallpaperapp-3488b.firebaseio.com",
-    "project_id": "wallpaperapp-3488b",
-    "storage_bucket": "wallpaperapp-3488b.appspot.com"
+    "project_number": "905326457272",
+    "firebase_url": "https://android-wallpaper-e88c5.firebaseio.com",
+    "project_id": "android-wallpaper-e88c5",
+    "storage_bucket": "android-wallpaper-e88c5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:172250354216:android:9d5fd9eb202d74fe",
+        "mobilesdk_app_id": "1:905326457272:android:867bdbf8f81994f8",
         "android_client_info": {
-          "package_name": "com.example.alex.wallpaperapp"
+          "package_name": "com.wallpaper.alex.wallpaperapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "172250354216-sql4a4k7guqnodpe9g3a3lonjjbulcnr.apps.googleusercontent.com",
+          "client_id": "905326457272-hmoa6e2eek28hqht33qp50fpuk81dn7s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.alex.wallpaperapp",
-            "certificate_hash": "ca856ba6caf0c271551f11edf602d6879fa9976d"
+            "package_name": "com.wallpaper.alex.wallpaperapp",
+            "certificate_hash": "06aa63f20ca833348cd7803bde52bb6ca38ff02a"
           }
         },
         {
-          "client_id": "172250354216-95o4ka173a7gdvqr854pil2ig4ldmhhj.apps.googleusercontent.com",
+          "client_id": "905326457272-6tr5j9ds7lio62jck12dvu2oggt1gg64.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBAXI_gZYahXOuBIXiGp4yhHx5GKRDA1k0"
+          "current_key": "AIzaSyCjkwXJdcNyv6l2orPDMCc_MtSHZQDZNlY"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "172250354216-95o4ka173a7gdvqr854pil2ig4ldmhhj.apps.googleusercontent.com",
+              "client_id": "905326457272-6tr5j9ds7lio62jck12dvu2oggt1gg64.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
