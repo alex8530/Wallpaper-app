@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:905326457272:android:867bdbf8f81994f8",
+        "mobilesdk_app_id": "1:905326457272:android:6ec6f9486358ded9515f4d",
         "android_client_info": {
-          "package_name": "com.wallpaper.alex.wallpaperapp"
+          "package_name": "com.alex.wallpaper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "905326457272-hmoa6e2eek28hqht33qp50fpuk81dn7s.apps.googleusercontent.com",
+          "client_id": "905326457272-6ldifr7fthhkv89cevrprhbqqi8i7s80.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.wallpaper.alex.wallpaperapp",
-            "certificate_hash": "06aa63f20ca833348cd7803bde52bb6ca38ff02a"
+            "package_name": "com.alex.wallpaper",
+            "certificate_hash": "f310bcbdb09330b6d9e08e0e24c2c9a22e356175"
           }
         },
         {

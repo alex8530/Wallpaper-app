@@ -5,7 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.wallpaper.alex.wallpaperapp"
+        applicationId "com.alex.wallpaper"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
