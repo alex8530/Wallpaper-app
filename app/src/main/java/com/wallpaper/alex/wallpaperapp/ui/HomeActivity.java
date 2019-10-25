@@ -115,7 +115,7 @@ public class HomeActivity extends AppCompatActivity
         setUpActionBarDrawerToggle();
         setUpTapLayout();
         loadUserInfo();
-         setUpAd();
+        setUpAd();
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -157,9 +157,8 @@ public class HomeActivity extends AppCompatActivity
         boolean a = mInterstitialAd.isLoaded();
         if (a) {
             mInterstitialAd.show();
-            Toast.makeText(this, "show", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "hide", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
          }
     }
 

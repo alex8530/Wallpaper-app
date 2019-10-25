@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.wallpaper.alex.wallpaperapp.R;
 import com.wallpaper.alex.wallpaperapp.model.Category;
 import com.wallpaper.alex.wallpaperapp.model.UserImage;
@@ -44,6 +47,8 @@ import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+
 
 public class UploadPhotoActivity extends AppCompatActivity {
     private static final String TAG = "UploadPhotoActivity";
@@ -77,6 +82,11 @@ public class UploadPhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_photo);
         ButterKnife.bind(this);
 
+//        MobileAds.initialize(this, Common.PANNER_1);
+        AdView mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         //firebase
         mStorage= FirebaseStorage.getInstance();
@@ -92,7 +102,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
         spinner.setVisibility(View.GONE);
 
 
-        /**********************************************************/
+        /******************************************************/
 
 
     }
@@ -161,8 +171,6 @@ public class UploadPhotoActivity extends AppCompatActivity {
 //
 //            }
 //        }
-//
-//
 //
 //    }
 
