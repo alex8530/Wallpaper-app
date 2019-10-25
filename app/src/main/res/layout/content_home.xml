@@ -24,7 +24,7 @@
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-4680912109247750/1738142791">
+            ads:adUnitId="@string/banner_ad_unit_id">
 
         </com.google.android.gms.ads.AdView>
 

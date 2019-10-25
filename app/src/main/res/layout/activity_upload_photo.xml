@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-4680912109247750/4775369677"></com.google.android.gms.ads.AdView>
+            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
 
     </LinearLayout>
 

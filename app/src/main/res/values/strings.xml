@@ -40,5 +40,12 @@
     <string name="drawer_about">About App</string>
     <string name="drawer_sign_out">Sign Out</string>
     <string name="drawer_title">Managment</string>
+
+
+
+
+
+    <string name="admob_app_id">ca-app-pub-4680912109247750~6990469470</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4680912109247750/1738142791</string>
 <!---->
 </resources>

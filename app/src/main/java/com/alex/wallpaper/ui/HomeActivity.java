@@ -124,19 +124,19 @@ public class HomeActivity extends AppCompatActivity
 
 
                 if (item.getItemId()==R.id.action_upload){
-                    showInterstitialAdd();
-//                    startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+//                    showInterstitialAdd();
+                     startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
                     //add listoner after close the add
-                    mInterstitialAd.setAdListener(new AdListener(){
-                        @Override
-                        public void onAdClosed() {
-                            startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
-                            //this is for second show after the first one show
-                            mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-
-                        }
-                    });
+//                    mInterstitialAd.setAdListener(new AdListener(){
+//                        @Override
+//                        public void onAdClosed() {
+//                            startActivity(new Intent(HomeActivity.this,UploadPhotoActivity.class));
+//                            //this is for second show after the first one show
+//                            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+//
+//
+//                        }
+//                    });
                     return true;
 
                 }
@@ -155,6 +155,38 @@ public class HomeActivity extends AppCompatActivity
         //
         MobileAds.initialize(this, Common.AD_ID);
         AdView mAdView = findViewById(R.id.adView);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Toast.makeText(HomeActivity.this, "Banner Ad Loaded",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Toast.makeText(HomeActivity.this, "Banner Ad Failed To Load",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                Toast.makeText(HomeActivity.this, "Banner Ad Opened",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                Toast.makeText(HomeActivity.this, "Banner Ad Left Application",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdClosed() {
+                Toast.makeText(HomeActivity.this, "Banner Ad Closed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
